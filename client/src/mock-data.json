@@ -1,0 +1,40 @@
+{
+  "posts": [
+    {
+      "user-id": 1,
+      "username": "JuanPerez",
+      "email": "juanperez@example.com",
+      "coordinates": {
+        "longitude": 13.42486,
+        "latitude": 52.48608
+      },
+      "post-id": 101,
+      "details": "Offering appliance repair services.",
+      "tag": "reparation"
+    },
+    {
+      "user-id": 2,
+      "username": "MariaLopez",
+      "email": "marialopez@example.com",
+      "coordinates": {
+        "longitude": 13.4365943,
+        "latitude": 52.480000
+      },
+      "post-id": 102,
+      "details": "Selling homemade food on request.",
+      "tag": "cooking"
+    },
+    {
+      "user-id": 3,
+      "username": "CarlosRamirez",
+      "email": "carlosramirez@example.com",
+      "coordinates": {
+        "longitude": 13.42678,
+        "latitude": 52.488
+      },
+      "post-id": 103,
+      "details": "Renting out apartments by the day in the city center.",
+      "tag": "rent"
+    }
+  ]
+}
