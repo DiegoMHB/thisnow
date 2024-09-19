@@ -21,18 +21,40 @@ box-sizing: border-box;
   width: 100vw;
 }
 
+/*Post*/
+#Pst_container{
+  position: absolute;
+  transform: translate(-50%, -50%);
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 2px solid white;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
 /* marker */
 
-.marker {
-  background-color: rgb(255, 0, 0);
+.marker_icon {
+  background-color: rgb(252, 0, 0);
   width: 60px;
   height: 60px; 
   background-size: cover; 
   border-radius: 50%; 
-  border: 2px solid rgba(0, 0, 0, 0.5); 
-  cursor: pointer;
   display: flex; 
   align-items: center; 
-  justify-content: center; 
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.marker_tag {
+  position: absolute;
+  margin-top: -8px;
+  left: 15px;
+  justify-content: center;
+}
+
+/* popup */
+
+.popUp_button{
+  width: 100%;
+  height: 40px;
 }

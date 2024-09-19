@@ -1,10 +1,14 @@
+import mapboxgl from "mapbox-gl";
+import {MapContainer} from 'react-leaflet';
 import { mapContext } from "./map-context";
 import { useState, useEffect, useRef } from "react";
-import mapboxgl from "mapbox-gl";
+// import { useNavigate } from "react-router-dom";
+
 import data from "../../mock-data.json";
 
 //this function populates geojson object, needed to display markers
 //it should go only throw the posts wich coords are close to the map location
+//lazy load?
 //THIS will be an apiService that fetchs from DB
 function populateFeatures(posts) {
   const feat = [];
@@ -13,12 +17,14 @@ function populateFeatures(posts) {
     const el = {
       type: "Feature",
       properties: {
+        username: post.username,
+        details: post.details,
         message: post.details,
         tag: post.tag,
         iconSize: [60, 60],
       },
       geometry: {
-        type: "Point",
+        // type: "Point",this property i need to render
         coordinates: [post.coordinates.longitude, post.coordinates.latitude],
       },
     };
@@ -27,15 +33,12 @@ function populateFeatures(posts) {
   return feat;
 }
 
-function getTag(post) {
-  return post.tag
-}
-
 export const MapProvider = ({ children }) => {
+  // const navigate = useNavigate();
   const mapRef = useRef();
   const [map, setMap] = useState(null);
   const [coords, setCoords] = useState(null);
-  const [features, setFeatures] = useState({});
+  // const [features, setFeatures] = useState({});//no needed
 
   //accessToken
   mapboxgl.accessToken =
@@ -83,7 +86,7 @@ export const MapProvider = ({ children }) => {
     });
 
     const feat = populateFeatures(data.posts);
-    setFeatures(feat);
+    // setFeatures(feat);
 
     mapRef.current.on("load", () => {
       const geojson = {
@@ -92,15 +95,13 @@ export const MapProvider = ({ children }) => {
       };
 
       for (const marker of geojson.features) {
-        const el = document.createElement("div");
         const tag = document.createElement("p");
-        tag.textContent= '#' + marker.properties.tag;
-        tag.style.marginTop= '40px'
-        tag.style.fontWeight= 'bold'
 
-        
+        tag.textContent = "#" + marker.properties.tag;
+        tag.style.marginTop = "40px";
+        tag.style.fontWeight = "bold";
 
-
+        const el = document.createElement("div");
         el.className = "marker";
         el.style.width = `20px`;
         el.style.height = `20px`;
@@ -108,14 +109,31 @@ export const MapProvider = ({ children }) => {
         el.style.backgroundSize = "cover";
         el.appendChild(tag);
 
-        const popUp = new mapboxgl.Popup({ offset: 25 }).setHTML(
-          "Construction on the Washington Monument began in 1848."
-        )
+        const popUpContent = document.createElement("div");
+        popUpContent.innerHTML = `
+          <p style='font-size:15px;font-weight:bold'>${marker.properties.username}: <p/>
+          <p style='font-size:12px'>${marker.properties.details}<p/>
+          <button 
+            style='width:100%; height:30px; marginTop:5px 
+            id="navigate-details"
+         ' >GO TO POST<button/>
+        `;
+
+        const popUp = new mapboxgl.Popup({ offset: 25 }).setDOMContent(
+          popUpContent
+        );
 
         new mapboxgl.Marker(el)
           .setLngLat(marker.geometry.coordinates)
-          .addTo(mapRef.current)
-          .setPopup(getTag(marker))
+          .setPopup(popUp)
+          .addTo(mapRef.current);
+
+
+        // button.addEventListener("click", () => console.log("clicked"));
+
+        popUpContent.querySelector('#navigate-details').addEventListener('click',()=>
+          console.log('clicked')
+        )
       }
     });
 

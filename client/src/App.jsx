@@ -1,14 +1,19 @@
-import Map from "./components/map";
 import "./App.css";
-import { MapProvider } from "./context/map/map-provider";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import Map from "./components/map";
+import Post from "./components/post";
+// import Post from "./components/post";
 
 function App() {
   return (
     <>
       <div id="gl_container">
-        <MapProvider>
-          <Map></Map>
-        </MapProvider>
+        <Router>
+          <Routes>
+            <Route path='/map' element={<Map/>} />
+            <Route path='/post' element={<Post/>} />
+          </Routes>
+        </Router>
       </div>
     </>
   );

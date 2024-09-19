@@ -8,7 +8,7 @@
         "longitude": 13.42486,
         "latitude": 52.48608
       },
-      "post-id": 101,
+      "postId": 101,
       "details": "Offering appliance repair services.",
       "tag": "reparation"
     },
@@ -20,7 +20,7 @@
         "longitude": 13.4365943,
         "latitude": 52.480000
       },
-      "post-id": 102,
+      "postId": 102,
       "details": "Selling homemade food on request.",
       "tag": "cooking"
     },
@@ -32,9 +32,21 @@
         "longitude": 13.42678,
         "latitude": 52.488
       },
-      "post-id": 103,
+      "postId": 103,
       "details": "Renting out apartments by the day in the city center.",
       "tag": "rent"
+    },
+    {
+      "user-id": 4,
+      "username": "Pepe",
+      "email": "Pepe@example.com",
+      "coordinates": {
+        "longitude": 13.41678,
+        "latitude": 52.4885
+      },
+      "postId": 104,
+      "details": "Looking for friends",
+      "tag": "friends"
     }
   ]
 }
