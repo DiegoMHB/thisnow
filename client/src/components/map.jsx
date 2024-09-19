@@ -1,51 +1,15 @@
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import { mapUtilities } from "../assets/mapUtilities";
 import { divIcon } from "leaflet";
-import data from "../mockData/mock-data.json";
 import { useNavigate } from 'react-router-dom';
-
-
 import "leaflet/dist/leaflet.css";
-import { useState, useEffect } from "react";
+import { useContext } from "react";
+import { PostContext } from "../context/postContext";
 
 const Map = () => {
+
+  const {posts, coords} = useContext(PostContext)
   const navigate = useNavigate();
-  const [coords, setCoords] = useState(null);
-  const [posts, setPosts] = useState([]);
-
-  //at monting the component get the position of the device:
-  useEffect(() => {
-    navigator.geolocation.getCurrentPosition(
-      (position) => {
-        const res = [position.coords.latitude, position.coords.longitude];
-        setCoords(res);
-      },
-      (error) => {
-        console.error("Error al obtener la ubicación:", error);
-      },
-      {
-        enableHighAccuracy: true, //more precission
-        timeout: 5000, //set how much is gonna wait to get the coordinades
-        maximumAge: 0, //no cache
-      }
-    );
-  }, []);
-
-  useEffect(() => {
-    setPosts([]); //Post reseting. the for loop has to be replaced by a fetch (considerating the area)
-    for (let post of data.posts) {
-      const el = {
-        username: post.username,
-        postId: post.postId,
-        details: post.details,
-        tag: post.tag,
-        geometry: {
-          coordinates: [post.coordinates.latitude, post.coordinates.longitude],
-        },
-      };
-      setPosts((prev) => [...prev, el]);
-    }
-  }, [coords]);
 
   if (!coords) {
     return <div>SPINNER</div>; //SPINNER
@@ -81,7 +45,7 @@ const Map = () => {
               <h3>{post.username}</h3>
               <p>{post.details}</p>
               <button className="popUp_button" onClick={()=> {
-                navigate('/post', {replace:true})
+                navigate(`/post/${post.postId}`, {replace:true})
               }}
               > GO TO POST</button>
             </div>
