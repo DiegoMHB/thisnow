@@ -8,7 +8,7 @@ function Post() {
 
   const {posts} = useContext(PostContext);
   const [post, setPost] = useState([])
-  const { postId } = useParams();
+  const { postId,userId } = useParams();
   
 
   useEffect(() => {

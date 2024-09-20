@@ -1,10 +1,16 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import "../../App.css";
 import { UserContext } from "../../context/userContext";
+import { useParams } from "react-router-dom";
+
 
 export const ProfileHeader = () => {
+  const {userId} = useParams();
+  const { user, setUser } = useContext(UserContext);
 
-  const { user } = useContext(UserContext);
+  useEffect(()=>{
+    console.log(userId)
+  },[])
 
   return (
     <section id="user_profile">
@@ -25,6 +31,6 @@ export const ProfileHeader = () => {
             </div>
           </div>
         </section>
-    
+
   )
 }

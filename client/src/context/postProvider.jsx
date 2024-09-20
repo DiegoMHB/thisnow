@@ -31,6 +31,7 @@ export const PostProvider = ({ children }) => {
     for (let post of data.posts) {
       const el = {
         username: post.username,
+        userId: post.userId,
         postId: post.postId,
         details: post.details,
         profile_picture: post.profile_picture,

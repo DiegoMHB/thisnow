@@ -2,7 +2,7 @@
   "posts": [
     {
       "postId": "101",
-      "user-id": "1",
+      "userId": "1",
       "username": "Juan Perez",
       "email": "juanperez@example.com",
       "post_picture": "/pics/1.jpg",
@@ -15,7 +15,7 @@
     },
     {
       "postId": "111",
-      "user-id": "1",
+      "userId": "1",
       "username": "Juan Perez",
       "email": "juanperez@example.com",
       "post_picture": "/pics/1.jpg",
@@ -28,7 +28,7 @@
     },
     {
       "postId": "121",
-      "user-id": "1",
+      "userId": "1",
       "username": "Juan Perez",
       "email": "juanperez@example.com",
       "post_picture": "/pics/1.jpg",
@@ -41,7 +41,7 @@
     },
     {
       "postId": "131",
-      "user-id": "1",
+      "userId": "1",
       "username": "Juan Perez",
       "email": "juanperez@example.com",
       "post_picture": "/pics/1.jpg",
@@ -54,7 +54,7 @@
     },
     {
       "postId": "102",
-      "user-id": "2",
+      "userId": "2",
       "username": "Maria Lopez",
       "email": "marialopez@example.com",
       "profile_picture": "/pics/2.jpg",
@@ -67,7 +67,7 @@
     },
     {
       "postId": "103",
-      "user-id": "3",
+      "userId": "3",
       "username": "Carlos Ramirez",
       "profile_picture": "/pics/3.jpg",
       "email": "carlosramirez@example.com",
@@ -80,7 +80,7 @@
     },
     {
       "postId": "4213",
-      "user-id": "3",
+      "userId": "3",
       "username": "Carlos Ramirez",
       "profile_picture": "/pics/3.jpg",
       "email": "carlosramirez@example.com",
@@ -93,7 +93,7 @@
     },
     {
       "postId": "3",
-      "user-id": "3",
+      "userId": "3",
       "username": "Carlos Ramirez",
       "profile_picture": "/pics/3.jpg",
       "email": "carlosramirez@example.com",
@@ -106,7 +106,7 @@
     },
     {
       "postId": "43",
-      "user-id": "3",
+      "userId": "3",
       "username": "Carlos Ramirez",
       "profile_picture": "/pics/3.jpg",
       "email": "carlosramirez@example.com",
@@ -118,7 +118,8 @@
       "tag": "rent"
     },
     {
-      "user-id": "4",
+      "postId": "104",
+      "userId": "4",
       "username": "Pepe",
       "email": "Pepe@example.com",
       "profile_picture": "/pics/4.jpg",
@@ -126,7 +127,6 @@
         "longitude": 13.41678,
         "latitude": 52.4885
       },
-      "postId": "104",
       "details": "Looking for friends",
       "tag": "friends"
     }

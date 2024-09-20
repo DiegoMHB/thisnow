@@ -5,12 +5,10 @@ import { useNavigate } from 'react-router-dom';
 import "leaflet/dist/leaflet.css";
 import { useContext } from "react";
 import { PostContext } from "../context/postContext";
-// import { UserContext } from "../context/userContext";
 
 const Map = () => {
 
   const {posts, coords} = useContext(PostContext)
-  // const {setUserId} = useContext(UserContext)
   const navigate = useNavigate();
 
   if (!coords) {
@@ -48,8 +46,7 @@ const Map = () => {
               <h3>{post.username}</h3>
               <p>{post.details}</p>
               <button className="popUp_button" onClick={()=> {
-                // setUserId(post.postId);
-                navigate(`/post/${post.postId}`, {replace:true})
+                navigate(`/user/${post.userId}/post/${post.postId}`, {replace:true})
               }}
               > GO TO POST</button>
             </div>
