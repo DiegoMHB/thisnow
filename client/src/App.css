@@ -7,6 +7,35 @@
   background-color: rgb(255, 255, 255);
 }
 
+/* RootLayout */
+#rootLayout {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+#main {
+  flex: 1;
+}
+
+#footer {
+  align-items: stretch;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-top: 1px solid #ccc;
+  z-index: 1000;
+}
+
+#footer nav {
+  display: flex;
+  gap: 20px;
+}
+.navLink {
+  font-size: 20px;
+  text-decoration: none;
+}
 /* global */
 #gl_container {
   display: flex;
@@ -20,11 +49,36 @@
 /* map */
 
 #map {
-  height: 100vh;
-  width: 100vw;
+  height: calc(97vh - 30px);
+}
+
+/* marker */
+
+.marker_icon {
+  width: 60px;
+  height: 60px;
+  background-size: cover;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+}
+
+.marker_tag {
+  position: absolute;
+  margin-top: -8px;
+  left: 15px;
+  justify-content: center;
+}
+
+/* popup */
+
+.popUp_button {
+  width: 100%;
+  height: 40px;
 }
 
 /*Post*/
+
 #post_container {
   height: 100%;
   width: 100%;
@@ -74,27 +128,64 @@
   height: 80%;
 }
 
-/* marker */
+/* Profile */
 
-.marker_icon {
-  width: 60px;
-  height: 60px;
-  background-size: cover;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-}
-
-.marker_tag {
-  position: absolute;
-  margin-top: -8px;
-  left: 15px;
-  justify-content: center;
-}
-
-/* popup */
-
-.popUp_button {
+.user_container {
   width: 100%;
-  height: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
 }
+
+#user_profile {
+  border-radius: 10px;
+  box-shadow: 1px 2px 2px rgb(50, 51, 50);
+  height: 120px;
+  margin: 10px;
+  padding: 10px;
+  display: flex;
+  justify-content: space-around;
+}
+
+#user_profile h2{
+margin-bottom: 10px;
+}
+
+#user_profile img {
+  object-fit: cover;
+  width: 100px;
+  height: 100px;
+  border-radius: 15px;
+}
+
+.smallFontCont {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding-right: 15px;
+}
+.smallFont {
+  font-size: 14px;
+}
+.bold{
+  font-weight: bold;
+}
+#user_profile_det {
+  align-items: center;
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-left: 10px;
+}
+.user_profile img {
+  width: 200px;
+  height: auto;
+}
+
+.user_details {
+  padding: 15px;
+  height: 80%;
+}
+
+/* footer */

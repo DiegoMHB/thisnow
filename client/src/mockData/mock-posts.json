@@ -1,0 +1,134 @@
+{
+  "posts": [
+    {
+      "postId": "101",
+      "user-id": "1",
+      "username": "Juan Perez",
+      "email": "juanperez@example.com",
+      "post_picture": "/pics/1.jpg",
+      "coordinates": {
+        "longitude": 13.42486,
+        "latitude": 52.48608
+      },
+      "details": "Offering appliance repair services.",
+      "tag": "reparation"
+    },
+    {
+      "postId": "111",
+      "user-id": "1",
+      "username": "Juan Perez",
+      "email": "juanperez@example.com",
+      "post_picture": "/pics/1.jpg",
+      "coordinates": {
+        "longitude": 13.42386,
+        "latitude": 52.48608
+      },
+      "details": "Old sofa to give for free",
+      "tag": "furniture"
+    },
+    {
+      "postId": "121",
+      "user-id": "1",
+      "username": "Juan Perez",
+      "email": "juanperez@example.com",
+      "post_picture": "/pics/1.jpg",
+      "coordinates": {
+        "longitude": 13.42386,
+        "latitude": 52.46608
+      },
+      "details": "I need a cat",
+      "tag": "cat"
+    },
+    {
+      "postId": "131",
+      "user-id": "1",
+      "username": "Juan Perez",
+      "email": "juanperez@example.com",
+      "post_picture": "/pics/1.jpg",
+      "coordinates": {
+        "longitude": 13.4239,
+        "latitude": 52.46618
+      },
+      "details": "I want to start a new Book club",
+      "tag": "Book club"
+    },
+    {
+      "postId": "102",
+      "user-id": "2",
+      "username": "Maria Lopez",
+      "email": "marialopez@example.com",
+      "profile_picture": "/pics/2.jpg",
+      "coordinates": {
+        "longitude": 13.4365943,
+        "latitude": 52.48
+      },
+      "details": "Selling homemade food on request.",
+      "tag": "cooking"
+    },
+    {
+      "postId": "103",
+      "user-id": "3",
+      "username": "Carlos Ramirez",
+      "profile_picture": "/pics/3.jpg",
+      "email": "carlosramirez@example.com",
+      "coordinates": {
+        "longitude": 13.42678,
+        "latitude": 52.488
+      },
+      "details": "Renting out apartments by the day in the city center.",
+      "tag": "rent"
+    },
+    {
+      "postId": "4213",
+      "user-id": "3",
+      "username": "Carlos Ramirez",
+      "profile_picture": "/pics/3.jpg",
+      "email": "carlosramirez@example.com",
+      "coordinates": {
+        "longitude": 13.42678,
+        "latitude": 52.488
+      },
+      "details": "Looking for a housekeeper.",
+      "tag": "Help!"
+    },
+    {
+      "postId": "3",
+      "user-id": "3",
+      "username": "Carlos Ramirez",
+      "profile_picture": "/pics/3.jpg",
+      "email": "carlosramirez@example.com",
+      "coordinates": {
+        "longitude": 13.42678,
+        "latitude": 52.488
+      },
+      "details": "Selling a ticket for the Roses concert.",
+      "tag": "Tickets"
+    },
+    {
+      "postId": "43",
+      "user-id": "3",
+      "username": "Carlos Ramirez",
+      "profile_picture": "/pics/3.jpg",
+      "email": "carlosramirez@example.com",
+      "coordinates": {
+        "longitude": 13.42678,
+        "latitude": 52.488
+      },
+      "details": "Renting out apartments by the day in the city center.",
+      "tag": "rent"
+    },
+    {
+      "user-id": "4",
+      "username": "Pepe",
+      "email": "Pepe@example.com",
+      "profile_picture": "/pics/4.jpg",
+      "coordinates": {
+        "longitude": 13.41678,
+        "latitude": 52.4885
+      },
+      "postId": "104",
+      "details": "Looking for friends",
+      "tag": "friends"
+    }
+  ]
+}

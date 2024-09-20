@@ -1,0 +1,36 @@
+{
+  "users": [
+    {
+      "userId": "1",
+      "username": "Juan Perez",
+      "email": "juanperez@example.com",
+      "profile_picture": "/pics/1.jpg",
+      "posts": ["101", "111","121","131"],
+      "dateLogin": "12/03/23"
+    },
+    {
+      "userId": "2",
+      "username": "Maria Lopez",
+      "email": "marialopez@example.com",
+      "profile_picture": "/pics/2.jpg",
+      "posts": ["102"],
+      "dateLogin": "02/05/24"
+    },
+    {
+      "userId": "3",
+      "username": "Carlos Ramirez",
+      "profile_picture": "/pics/3.jpg",
+      "email": "carlosramirez@example.com",
+      "posts": ["103","4213","3","43"],
+      "dateLogin": "22/01/24"
+    },
+    {
+      "userId": "4",
+      "username": "Pepe",
+      "email": "Pepe@example.com",
+      "profile_picture": "/pics/4.jpg",
+      "postId": ["104"],
+      "dateLogin": "24/06/11"
+    }
+  ]
+}

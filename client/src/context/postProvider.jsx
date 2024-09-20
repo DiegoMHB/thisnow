@@ -40,7 +40,7 @@ export const PostProvider = ({ children }) => {
         },
       };
       setPosts((prev) => [...prev, el]);
-      // console.log(posts);
+      
     }
   }, [coords]);
 
