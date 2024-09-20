@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { PostContext } from "./postContext";
-import data from "../mockData/mock-data.json";
+import data from "../mockData/mock-posts.json";
 
 export const PostProvider = ({ children }) => {
 
