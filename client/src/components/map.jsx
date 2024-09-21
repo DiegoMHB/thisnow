@@ -30,8 +30,8 @@ const Map = () => {
         <Marker
           key={post.postId}
           position={[
-            post.geometry.coordinates[0],
-            post.geometry.coordinates[1],
+            post.coordinates.latitude,//
+            post.coordinates.longitude,//
           ]}
           icon={divIcon({
             className: "marker_icon",

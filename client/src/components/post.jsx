@@ -4,7 +4,7 @@ import { PostContext } from "../context/postContext";
 import { useParams } from "react-router-dom";
 import { ProfileHeader } from "./sub_components/profileComp";
 import { UserContext } from "../context/userContext";
-import { PostDetails } from "./sub_components/postDetails";
+import  PostDetails  from "./sub_components/postDetails";
 
 
 function Post() {
@@ -17,7 +17,7 @@ function Post() {
   useEffect(() => {
     const filteredPosts = posts.filter(p => p.postId === postId);
     setPost(filteredPosts[0] || null);
-    setId(userId)
+    setId(userId);
   }, [postId, posts]);
 
   return (
