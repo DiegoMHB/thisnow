@@ -7,7 +7,10 @@ export const UserProvider = ({ children }) => {
   const [user, setUser] = useState({});
   const [id, setId] = useState('');
 
-  useEffect(() => {
+
+
+
+  useEffect(() => {//fetch from the db
     for (let user of data.users) {
       if (user.userId === id) {
         const el = {
@@ -28,7 +31,7 @@ export const UserProvider = ({ children }) => {
     <UserContext.Provider
       value={{
         user,
-        setId
+        setId,
       }}
     >
       {children}

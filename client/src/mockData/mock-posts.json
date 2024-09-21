@@ -63,7 +63,8 @@
         "latitude": 52.48
       },
       "details": "Selling homemade food on request.",
-      "tag": "cooking"
+      "tag": "cooking",
+      "pictures": "/pics/2.jpg"
     },
     {
       "postId": "103",

@@ -1,25 +1,42 @@
-import { useContext } from "react";
+import { useState, useEffect, useContext } from "react";
 import "../App.css";
-import { UserContext } from "../context/userContext";
 import { ProfileHeader } from "./sub_components/profileComp";
+import data from "../mockData/mock-users.json";
+import { PostContext } from "../context/postContext";
 
 function Profile() {
-  const { user } = useContext(UserContext);
+  const { posts } = useContext(PostContext);
+  const [myAccount, setMyAccount] = useState({});
+  const [myPosts, setMyPosts] = useState([]);
 
+  useEffect(() => {
+    for (let user of data.users) {
+      if (user.userId === "3") {
+        setMyAccount(user);
+      }
+    }
+  }, []);
+
+  useEffect(() => {
+    console.log(posts)
+    if (posts.length > 0) {
+      const userPosts = posts.filter(post => post.userId === "3");
+      setMyPosts(userPosts);
+    }
+  }, [posts]);
 
   return (
     <>
       <div className="user_container">
-    <ProfileHeader></ProfileHeader>
-        
+        <ProfileHeader user={myAccount}></ProfileHeader>
 
         <section className="user_details">
-          <h3>{user.tag}</h3>
-          <p>{user.details}</p>
-          <p>{user.details}</p>
-          <p>status</p>
+        <ul>
+        {myPosts.map(post => (
+          <li key={post.postId}>{post.details}</li>
+        ))}
+      </ul>
         </section>
-        
       </div>
     </>
   );

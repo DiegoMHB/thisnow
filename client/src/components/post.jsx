@@ -4,12 +4,12 @@ import { PostContext } from "../context/postContext";
 import { useParams } from "react-router-dom";
 import { ProfileHeader } from "./sub_components/profileComp";
 import { UserContext } from "../context/userContext";
+import { PostDetails } from "./sub_components/postDetails";
 
 
 function Post() {
   const {posts} = useContext(PostContext);
-  const {setId} = useContext(UserContext)
-  const {user} = useContext(UserContext)
+  const {setId,user} = useContext(UserContext)
   const [post, setPost] = useState([])
   const { postId, userId } = useParams();
 
@@ -17,19 +17,14 @@ function Post() {
   useEffect(() => {
     const filteredPosts = posts.filter(p => p.postId === postId);
     setPost(filteredPosts[0] || null);
+    setId(userId)
   }, [postId, posts]);
 
-    setId(userId)
   return (
     <>
       <ProfileHeader user={user}></ProfileHeader>
-      {
-        <div id="post_details">
-          <h2>{post.tag}</h2>
-          <p>{post.details}</p>
-          <p>status</p>
-        </div>
-      }
+      <p className="smallFont bold mg">One post is active:</p>
+      <PostDetails post={post}></PostDetails>
     </>
   );
 }
