@@ -1,8 +1,7 @@
 import { useState, useEffect, useContext } from "react";
-import "../App.css";
-import { ProfileHeader } from "./sub_components/profileComp";
-import data from "../mockData/mock-users.json";
-import { PostContext } from "../context/postContext";
+import { ProfileHeader } from "../sub_components/profileComp";
+import data from "../../mockData/mock-users.json";
+import { PostContext } from "../../context/postContext";
 
 function Profile() {
   const { posts } = useContext(PostContext);
@@ -18,7 +17,6 @@ function Profile() {
   }, []);
 
   useEffect(() => {
-    console.log(posts)
     if (posts.length > 0) {
       const userPosts = posts.filter(post => post.userId === "3");
       setMyPosts(userPosts);

@@ -1,10 +1,10 @@
+import "leaflet/dist/leaflet.css";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
-import { mapUtilities } from "../assets/mapUtilities";
 import { divIcon } from "leaflet";
 import { useNavigate } from 'react-router-dom';
-import "leaflet/dist/leaflet.css";
 import { useContext } from "react";
-import { PostContext } from "../context/postContext";
+import { mapUtilities } from "../../assets/mapUtilities";
+import { PostContext } from "../../context/postContext";
 
 const Map = () => {
 

@@ -1,10 +1,9 @@
-import "../App.css";
 import { useContext, useEffect, useState } from "react";
-import { PostContext } from "../context/postContext";
 import { useParams } from "react-router-dom";
-import { ProfileHeader } from "./sub_components/profileComp";
-import { UserContext } from "../context/userContext";
-import  PostDetails  from "./sub_components/postDetails";
+import { ProfileHeader } from "../sub_components/profileComp";
+import  PostDetails  from "../sub_components/postDetails";
+import { UserContext } from "../../context/userContext";
+import { PostContext } from "../../context/postContext";
 
 
 function Post() {
