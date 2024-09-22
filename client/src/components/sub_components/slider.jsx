@@ -23,7 +23,7 @@ function ImageSlider({ images }) {
             <img
               src={image}
               alt={`Slide ${index}`}
-              style={{ width: "80%", height: "100%", margin: "auto" }}
+              style={{ width: "80%", maxHeight:"220px", margin: "auto", padding:"10px",objectFit: "cover" }}
             />
           </div>
         ))}

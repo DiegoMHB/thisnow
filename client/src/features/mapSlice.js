@@ -1,34 +1,49 @@
 import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
-  coords : []
+  coords: [0, 0],
+  loading: false,
+  error: null,
 }
 
 export const mapSlice = createSlice({
   name: 'map',
   initialState,
   reducers: {
-    getCoords : (state) => {
-      let res = []
-      navigator.geolocation.getCurrentPosition(
-        (position) => {
-          res = [position.coords.latitude, position.coords.longitude];
-        },
-        (error) => {
-          console.error("No location found:", error);
-        },
-        {
-          enableHighAccuracy: true, //more precission
-          timeout: 5000, //set how much is gonna wait to get the coordinades
-          maximumAge: 0, //no cache
-        }
-      );
-      return {...state, coords : res}
+    getCoordsStart: (state) => {
+      state.loading = true;
+      state.error = null;
     },
-   
+    getCoordsSuccess: (state, action) => {
+      state.coords = action.payload;
+      state.loading = false;
+    },
+    getCoordsFailure: (state, action) => {
+      state.loading = false;
+      state.error = action.payload;
+    },
   },
-})
+});
 
-export const {getCoords} = mapSlice.actions
+export const { getCoordsStart, getCoordsSuccess, getCoordsFailure } = mapSlice.actions;
 
-export default mapSlice.reducer
+export const getCoords = () => (dispatch) => {
+  dispatch(getCoordsStart());
+  navigator.geolocation.getCurrentPosition(
+    (position) => {
+      const res = [position.coords.latitude, position.coords.longitude];
+      dispatch(getCoordsSuccess(res));
+    },
+    (error) => {
+      console.error("No location found:", error);
+      dispatch(getCoordsFailure(error.message));
+    },
+    {
+      enableHighAccuracy: true,
+      timeout: 5000,
+      maximumAge: 0,
+    }
+  );
+};
+
+export default mapSlice.reducer;

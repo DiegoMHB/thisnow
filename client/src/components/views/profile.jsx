@@ -1,41 +1,37 @@
-import { useState, useEffect, useContext } from "react";
+/* eslint-disable react/no-unescaped-entities */
 import { ProfileHeader } from "../sub_components/profileComp";
-import data from "../../mockData/mock-users.json";
-import { PostContext } from "../../context/postContext";
+import { useSelector } from "react-redux";
+
 
 function Profile() {
-  const { posts } = useContext(PostContext);
-  const [myAccount, setMyAccount] = useState({});
-  const [myPosts, setMyPosts] = useState([]);
 
-  useEffect(() => {
-    for (let user of data.users) {
-      if (user.userId === "3") {
-        setMyAccount(user);
-      }
-    }
-  }, []);
+  const user = useSelector((state) => state.user.user);
+  const posts = useSelector((state) => state.posts.posts);
 
-  useEffect(() => {
-    if (posts.length > 0) {
-      const userPosts = posts.filter((post) => post.userId === "3");
-      setMyPosts(userPosts);
-    }
-  }, [posts]);
+  const userPosts = posts.filter((post) => post.userId === user.userId);
 
   return (
     <>
-      <div className="user_container">
-        <ProfileHeader user={myAccount}></ProfileHeader>
+        <ProfileHeader user={user}></ProfileHeader>
 
-        <section className="user_details">
-            {myPosts.map((post) => (
-              <div id='post_list' key={post.postId}>
-                <p >{post.details}</p>
+        <div className="menu_line smallFont bold">
+          <div className="capsule inverted"> <p>Searchs</p></div>
+          <div className="capsule inverted"><p>Friends</p></div>
+          <div className="capsule inverted"><p>Your Account</p></div>
+        </div>
+
+        <section className="box_post">
+          <p className='smallFont bold'>Your last posts:</p>
+            {userPosts.map((post) => (
+              <div  className="capsule_big bg_blue" key={post.postId}>
+                <p className='smallFont bold'>{post.date}</p>
+                <p >"{post.details}"</p>
               </div>
             ))}
         </section>
-      </div>
+        <div className="menu_line center">
+          <button className="capsule_big inverted ">CREATE A NEW POST!</button>
+        </div>
     </>
   );
 }

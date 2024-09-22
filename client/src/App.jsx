@@ -4,6 +4,7 @@ import RootLayout from "./components/layout/RootLayout";
 import Profile from "./components/views/profile";
 import Map from "./components/views/map";
 import Post from "./components/views/post";
+import Tags from "./components/views/tags";
 
 
 const router = createBrowserRouter(
@@ -11,6 +12,7 @@ const router = createBrowserRouter(
     <Route path='/' element={<RootLayout/>}>
       <Route path='user/:userId' element={<Profile/>}/>
       <Route path='/map' element={<Map/>}/>
+      <Route path='/tags' element={<Tags/>}/>
       <Route path='/user/:userId/post/:postId' element={<Post/>}/>
     </Route>
   )

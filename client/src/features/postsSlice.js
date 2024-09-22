@@ -5,7 +5,7 @@ import data from "../mockData/mock-posts.json";
 
 
 const initialState = {
-  posts: [],
+  posts: [...data.posts],
   loading: false,
   error: null
 };

@@ -2,13 +2,14 @@ import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
   isValidated: false,
-  userId: "",
-  userName: "",
-  profile_picture: "",
-  email: "",
-  dateLogin: "",
-  signedIn: "",
-  posts: []
+  user: {
+  userId: "1",
+  username: "Juan Perez",
+  email: "juanperez@example.com",
+  profile_picture: "/pics/1.jpg",
+  dateLogin: "12/03/23",
+  posts: ["101", "111", "121"],
+  }
 }
 
 export const userSlice = createSlice({

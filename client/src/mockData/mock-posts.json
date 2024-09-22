@@ -5,11 +5,9 @@
       "userId": "1",
       "username": "Juan Perez",
       "email": "juanperez@example.com",
-      "post_picture": "/pics/1.jpg",
-      "coordinates": {
-        "latitude": 52.48608,
-        "longitude": 13.42486
-      },
+      "post_picture": ["/pics/post_2.jpeg"],
+      "coordinates": [52.48, 13.41],
+      "date": "6/06/2023",
       "details": "Offering appliance repair services.",
       "tag": "reparation"
     },
@@ -18,11 +16,9 @@
       "userId": "1",
       "username": "Juan Perez",
       "email": "juanperez@example.com",
-      "post_picture": "/pics/1.jpg",
-      "coordinates": {
-        "latitude": 52.48608,
-        "longitude": 13.42386
-      },
+      "post_picture": ["/pics/post_1.jpeg"],
+      "coordinates": [52.43, 13.417],
+      "date": "3/12/2024",
       "details": "Old sofa to give for free",
       "tag": "furniture"
     },
@@ -31,101 +27,67 @@
       "userId": "1",
       "username": "Juan Perez",
       "email": "juanperez@example.com",
-      "post_picture": "/pics/1.jpg",
-      "coordinates": {
-        "latitude": 52.46608,
-        "longitude": 13.42386
-      },
+      "post_picture": ["/pics/post_3.jpeg"],
+      "coordinates": [52.4885, 13.431],
+      "date": "7/07/2023",
       "details": "I need a cat",
       "tag": "cat"
     },
-    {
-      "postId": "131",
-      "userId": "1",
-      "username": "Juan Perez",
-      "email": "juanperez@example.com",
-      "post_picture": "/pics/1.jpg",
-      "coordinates": {
-        "latitude": 52.46618,
-        "longitude": 13.4239
-      },
-      "details": "I want to start a new Book club",
-      "tag": "Book club",
-      "pictures": ["/pics/2.jpg"]
-    },
+
     {
       "postId": "102",
       "userId": "2",
       "username": "Maria Lopez",
       "email": "marialopez@example.com",
-      "profile_picture": "/pics/2.jpg",
-      "coordinates": {
-        "latitude": 52.48,
-        "longitude": 13.4365943
-      },
+      "coordinates": [52.4885, 13.42],
+      "date": "22/08/2024",
       "details": "Selling homemade food on request.",
       "tag": "cooking",
-      "pictures": ["/pics/2.jpg","/pics/2.jpg"]
+      "pictures": ["/pics/post_3.jpeg", "/pics/post_2.jpeg"]
     },
     {
       "postId": "103",
       "userId": "3",
       "username": "Carlos Ramirez",
-      "profile_picture": "/pics/3.jpg",
       "email": "carlosramirez@example.com",
-      "coordinates": {
-        "latitude": 52.488,
-        "longitude": 13.42678
-      },
+      "coordinates": [52.5, 13.41678],
+      "date": "22/09/2024",
       "details": "Renting out apartments by the day in the city center.",
       "tag": "rent",
-      "pictures": ["/pics/2.jpg"]
-
+      "pictures": ["/pics/post_2.jpeg"]
     },
     {
       "postId": "4213",
       "userId": "3",
       "username": "Carlos Ramirez",
-      "profile_picture": "/pics/3.jpg",
       "email": "carlosramirez@example.com",
-      "coordinates": {
-        "latitude": 52.488,
-        "longitude": 13.42678
-      },
+      "coordinates": [52.486, 13.4185],
+      "date": "22/10/2024",
       "details": "Looking for a housekeeper.",
       "tag": "Help!",
-      "pictures": ["/pics/2.jpg"]
-
+      "pictures": ["/pics/post_3.jpeg", "/pics/post_2.jpeg"]
     },
     {
       "postId": "3",
       "userId": "3",
       "username": "Carlos Ramirez",
-      "profile_picture": "/pics/3.jpg",
       "email": "carlosramirez@example.com",
-      "coordinates": {
-        "latitude": 52.488,
-        "longitude": 13.42678
-      },
+      "coordinates": [52.49, 13.416],
+      "date": "22/09/2024",
       "details": "Selling a ticket for the Roses concert.",
       "tag": "Tickets",
-      "pictures": ["/pics/2.jpg"]
-
+      "pictures": ["/pics/post_1.jpeg", "/pics/post_2.jpeg"]
     },
     {
       "postId": "43",
       "userId": "3",
       "username": "Carlos Ramirez",
-      "profile_picture": "/pics/3.jpg",
       "email": "carlosramirez@example.com",
-      "coordinates": {
-        "latitude": 52.488,
-        "longitude": 13.42678
-      },
+      "coordinates": [52.48, 13.44],
+      "date": "22/09/2024",
       "details": "Renting out apartments by the day in the city center.",
       "tag": "rent",
-      "pictures": ["/pics/2.jpg"]
-
+      "pictures": ["/pics/post_3.jpeg", "/pics/post_2.jpeg"]
     },
     {
       "postId": "104",
@@ -133,14 +95,11 @@
       "username": "Pepe",
       "email": "Pepe@example.com",
       "profile_picture": "/pics/4.jpg",
-      "coordinates": {
-        "latitude": 52.4885,
-        "longitude": 13.41678
-      },
+      "date": "22/09/2024",
+      "coordinates": [52.473, 13.44],
       "details": "Looking for friends",
       "tag": "friends",
-      "pictures": ["/pics/2.jpg"]
-
+      "pictures": ["/pics/post_3.jpeg", "/pics/post_2.jpeg"]
     }
   ]
 }
