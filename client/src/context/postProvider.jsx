@@ -25,7 +25,7 @@ export const PostProvider = ({ children }) => {
   }, []);
 
   useEffect(() => {
-    setPosts([]); //Post reseting. the for loop has to be replaced by a fetch (considerating the area)
+    setPosts([]); //Posts reseting. the for loop has to be replaced by a fetch (considerating the area)
     setPosts(data.posts);
   }, [coords]);
 

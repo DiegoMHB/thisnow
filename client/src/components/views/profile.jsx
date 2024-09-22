@@ -18,7 +18,7 @@ function Profile() {
 
   useEffect(() => {
     if (posts.length > 0) {
-      const userPosts = posts.filter(post => post.userId === "3");
+      const userPosts = posts.filter((post) => post.userId === "3");
       setMyPosts(userPosts);
     }
   }, [posts]);
@@ -29,11 +29,11 @@ function Profile() {
         <ProfileHeader user={myAccount}></ProfileHeader>
 
         <section className="user_details">
-        <ul>
-        {myPosts.map(post => (
-          <li key={post.postId}>{post.details}</li>
-        ))}
-      </ul>
+            {myPosts.map((post) => (
+              <div id='post_list' key={post.postId}>
+                <p >{post.details}</p>
+              </div>
+            ))}
         </section>
       </div>
     </>

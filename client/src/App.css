@@ -147,6 +147,19 @@ margin-bottom: 10px;
   height: 80%;
 }
 
+#post_list :first-child{
+  border-top: 1px solid grey;
+
+}
+
+#post_list{
+  margin-top: 10px;
+  padding: 15px;
+  height: 60px;
+  border-bottom: 1px solid grey;
+ 
+}
+
 /* helpers classes */
 .mg{
   margin-top: 30px;

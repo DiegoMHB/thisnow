@@ -1,6 +1,7 @@
 import { NavLink, Outlet } from "react-router-dom";
 import { useLocation } from "react-router-dom";
-import { ProfileHeader } from "../sub_components/profileComp";
+
+import Profile from "../views/profile";
 
 function RootLayout() {
 
@@ -11,11 +12,11 @@ function RootLayout() {
     <div id="rootLayout">
 
       <main id="main">
-        {/* {location.pathname === "/" ?
-          <ProfileHeader></ProfileHeader>
-          : */}
+        {location.pathname === "/" ?
+          <Profile></Profile>
+          : 
           <Outlet></Outlet>
-          {/* } */}
+          }
       </main>
 
       <footer id="footer">
