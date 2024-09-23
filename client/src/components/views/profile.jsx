@@ -12,7 +12,7 @@ function Profile() {
 
   return (
     <>
-        <ProfileHeader user={user}></ProfileHeader>
+        <ProfileHeader ></ProfileHeader>
 
         <div className="menu_line smallFont bold">
           <div className="capsule inverted"> <p>Searchs</p></div>

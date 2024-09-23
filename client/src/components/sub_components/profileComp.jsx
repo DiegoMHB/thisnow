@@ -1,8 +1,19 @@
 import "../../App.css";
+import { useSelector } from "react-redux";
+export const ProfileHeader = () => {
+  
+  const user = useSelector((state) => state.user.user);
+  const member_since = user.member_since;
+  const date = new Date(member_since);
 
-export const ProfileHeader = ({ user }) => {
-  // const formattedDate = user.date.date.toLocaleDateString();
-  // console.log(formattedDate)
+  const formattedDate = date.toLocaleString('en-US', {
+    year: 'numeric',
+    month: 'short',  
+    day: 'numeric',
+    
+  });
+  console.log(formattedDate)
+  
 
   return (
     <section id="user_profile" className="genericBox bg_blue">
@@ -11,7 +22,7 @@ export const ProfileHeader = ({ user }) => {
         <h3>{user.username}</h3>
         <div className="smallFontCont ">
           <p className="smallFont">Member since:</p>
-          <p className="smallFont bold">{user.dateLogin}</p>
+          <p className="smallFont bold">{formattedDate}</p>
         </div>
         <div className="smallFontCont mgT5">
           <p className="smallFont">Posted:</p>

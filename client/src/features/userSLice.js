@@ -11,7 +11,6 @@ const initialState = {
     username: "",
     email: "",
     profile_picture: "",
-    dateLogin: "",
     posts: [],
   }
 }

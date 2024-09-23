@@ -3,11 +3,12 @@ import { useLocation } from "react-router-dom";
 import  Map from "../views/map";
 import { useState } from "react";
 import Home from "../sub_components/home";
+import { useSelector } from "react-redux";
 
 function RootLayout() {
   const [clicked, setClicked] = useState(false);
   const location = useLocation();
-  const userId = 2;
+  const user = useSelector((state) => state.user.user);
 
   return (
     <div className="bg_degradado">
@@ -37,7 +38,8 @@ function RootLayout() {
             >
               Posts
             </NavLink>
-            <NavLink className="capsule no_dec inverted" to={`/user/${userId}`}>
+            <NavLink className="capsule no_dec inverted" to={`/user/${user._id
+            }`}>
               Profile
             </NavLink>
           </nav>
