@@ -70,7 +70,6 @@ const Map = () => {
                       });
                     }}
                   >
-                    {" "}
                     GO TO POST
                   </button>
               </Popup>

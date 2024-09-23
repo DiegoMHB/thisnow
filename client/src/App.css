@@ -127,6 +127,9 @@
 
 
 /* RootLayout */
+.thisNow{
+  display:none;
+}
 #rootLayout {
   background: linear-gradient(45deg, rgb(198, 238, 247), rgb(224, 245, 230));
   height: calc(100vh - 20px);
@@ -249,30 +252,31 @@ background-color: rgb(19, 169, 142);
 /* popup */
 
 .custom-popup {
-  width: 200px;
+  width: 180px;
   color: white;
   padding: 10px;
   border-radius: 8px;
   font-size: 12px;
-  background: linear-gradient(45deg, rgb(198, 238, 247), rgb(224, 245, 230));
+  background: linear-gradient(45deg, rgba(198, 238, 247, 0.3), rgb(224, 245, 230));
   display: flex;
   justify-content: center;
-}
-
-#popUp{
-  max-width: 150px;
-  height: 150px;
-}
-
-#popUp p{
-  width: 120px;
   text-wrap: wrap;
-  
 }
-#popUp span{
- position: absolute;
- color: red;
-  
+
+
+.custom-popup div{
+  width: 150px;
+  text-wrap: wrap;
+}
+.custom-popup .leaflet-popup-tip{
+ display: none;
+ margin: 0px;
+ padding: 0px;
+}
+
+.custom-popup  p{
+  text-wrap: wrap;
+  width: 120px;
 }
 
 .popUp_button {

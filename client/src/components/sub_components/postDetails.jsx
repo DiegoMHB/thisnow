@@ -7,7 +7,7 @@ function PostDetails({ post, user }) {
   const images = post.pictures;
 
   function noSurname(str) {
-    return str.split(" ")[0];
+    return str.split(" ")[0].toUpperCase();
   }
 
   return (
@@ -34,8 +34,8 @@ function PostDetails({ post, user }) {
       ) : null}
       <div className="menu_line center">
         <button className="capsule_big inverted bold ">
-          Contact {user && user.username ? noSurname(user.username) : "User"}{" "}
-          now!
+          CONTACT {user && user.username ? noSurname(user.username) : "User"}{" "}
+          NOW!
         </button>
       </div>
     </section>

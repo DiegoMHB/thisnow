@@ -1,9 +1,12 @@
 import { NavLink, Outlet } from "react-router-dom";
 import { useLocation } from "react-router-dom";
+import  Map from "../views/map"
 
-import Profile from "../views/profile";
+// import Profile from "../views/profile";
+import { useState } from "react";
 
 function RootLayout() {
+  const [clicked, setClicked] = useState(false);
   const location = useLocation();
   const userId = 2;
 
@@ -11,7 +14,18 @@ function RootLayout() {
     <div className="bg_degradado">
       <div id="rootLayout">
         <main id="main">
-          {location.pathname === "/" ? <Profile></Profile> : <Outlet></Outlet>}
+          {location.pathname === "/" && clicked==false ? (
+            <div className="V_centered">
+              <div className="capsule_big flex_center center inverted">
+                <h2 onClick={()=>setClicked(true)}>THIS NOW </h2>
+              </div>
+            </div>
+          ) :
+          location.pathname === "/" && clicked=== true?
+          <Map></Map>:
+          (
+            <Outlet></Outlet>
+          )}
         </main>
 
         <footer id="footer">
@@ -22,7 +36,10 @@ function RootLayout() {
             <NavLink className="capsule no_dec inverted " to="/tags">
               Tags
             </NavLink>
-            <NavLink className="capsule no_dec inverted" to="user/:userId/post/:postId">
+            <NavLink
+              className="capsule no_dec inverted"
+              to="user/:userId/post/:postId"
+            >
               Posts
             </NavLink>
             <NavLink className="capsule no_dec inverted" to={`/user/${userId}`}>
