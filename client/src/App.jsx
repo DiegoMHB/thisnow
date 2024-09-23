@@ -5,12 +5,15 @@ import Profile from "./components/views/profile";
 import Map from "./components/views/map";
 import Post from "./components/views/post";
 import Tags from "./components/views/tags";
-
+import Login from "./components/views/login";
+import Signin from "./components/views/singin";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path='/' element={<RootLayout/>}>
       <Route path='user/:userId' element={<Profile/>}/>
+      <Route path='/login' element={<Login/>}/>
+      <Route path='/signin' element={<Signin/>}/>
       <Route path='/map' element={<Map/>}/>
       <Route path='/tags' element={<Tags/>}/>
       <Route path='/user/:userId/post/:postId' element={<Post/>}/>

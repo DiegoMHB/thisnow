@@ -32,11 +32,12 @@
   display: flex;
   justify-content: space-around;
   align-items: center;
-  height: 22px;
-  border-radius: 22px;
-  padding: 12px;
+  height: 28px;
+  border-radius: 28px;
+  padding: 12px 20px;
   background-color:rgb(255, 255, 255);
 }
+
 
 .capsule_big{
   border-radius: 22px;
@@ -47,6 +48,7 @@
   margin: 10px 0px;
 }
 
+
 .menu_line{
   display: flex;
   justify-content: space-between;
@@ -54,16 +56,26 @@
   margin-top:20px;
 }
 
+.inline{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap:5px
+}
+
 .noMargin{
   margin: 0px;
 }
-
 
 /*Colors*/
 
 .inverted{
   background-color: black;
   color: white;
+}
+.transButton{
+  background-color: white;
+  color: rgb(56, 55, 55);
 }
 
 /* .inverted:hover {
@@ -84,6 +96,11 @@
 }
 
 /*Fonts*/
+
+.fontInputSignin{
+font-size: 15px;
+}
+
 .smallFontCont {
   width: 100%;
   display: flex;
@@ -102,11 +119,23 @@
 .no_dec{
   text-decoration: none;
 }
+.border-bottom{
+  border:none;
+  border-bottom: 1px solid grey ; 
+}
+
 
 /* Position */
+.mgT5{
+  margin-top: 5px;
+}
 .mgL12{
   margin-left: 12px;
   margin-top: 12px;
+}
+.mgL20{
+  margin-left: 12px;
+  margin-top: 25px;
 }
 
 .flex_center{
@@ -117,10 +146,14 @@
 .center{
   justify-content: center;
 }
+.align{
+  align-items: center;
+}
 
 .V_centered{
   height: 100%;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
@@ -146,6 +179,15 @@
 
 /* Components */
 /* ProfileHeader */
+
+#online{
+  height: 10px;
+  width:  10px;
+  display: inline-block;
+  background-color: green;
+  border-radius: 5px;
+  border: black;
+}
 
 #user_profile {
   height: 120px;
@@ -224,17 +266,30 @@ margin-bottom: 10px;
 }
 
 
+/*LogIn*/
+.widthEl{
+  width: 80vw;
+}
+
+/*SignIn*/
+#uploadFile{
+ display: flex;
+ justify-content: center;
+ align-items: baseline;
+ gap:15px;
+ margin-top: 20px;
+}
+
+
 /* map */
 
 #map{
   height: 80vh ;
   width: 95%;
   border-radius: 10px;
+  margin-top: 12px;
 }
-#map_box{
-padding: 10px;
 
-}
 /* marker */
 
 .marker_icon {
@@ -286,10 +341,15 @@ background-color: rgb(19, 169, 142);
 }
 
 
+
 /*Views*/
-/* Profile */
 
 
+/* Login */
+
+#login input{
+  font-size: 15px;
+}
 
 
 
@@ -299,12 +359,12 @@ background-color: rgb(19, 169, 142);
 #tags_list{
   display: flex;
   justify-content: row;
+  justify-content: space-around;
   flex-wrap: wrap;
   height: max-content;
-  padding:10px;
+  padding:10px 5px;
   gap:5px;
 }
-
 
 
 /*Post-View*/

@@ -1,16 +1,35 @@
 const model = require('../db/models/usersModel');
 
 
+exports.userLogin = async (req, res) => {
+  try {
+
+    const { password, username } = req.body;
+    const user = await model.login(username, password);
+    if (typeof user !== 'string') {
+      res.status(200).send(user);
+      return user;
+    } else {
+      res.status(404);
+      res.send(user)
+    }
+    
+  } catch (error) {
+    res.status(500).send('Something happened:', error);
+  }
+}
+
 
 exports.newUser = async (req, res) => {
   try {
-
+    
     const user = req.body;
+    console.log('CONTROLLERS',user)
     const newUser = model.newUser(user);
 
     if (newUser) {
       res.status(201);
-      return newUser
+      res.send(user);
     } else {
       res.status(400).send('Couldnt create user')
     }
@@ -39,23 +58,3 @@ exports.getAllUsers = async (req, res) => {
   }
 }
 
-
-exports.getUser = async (req, res) => {
-  try {
-    
-    const id = req.params.id;
-    const user = await model.getOneUser(id);
-
-    if (user) {
-      res.status(201);
-      res.send(user);
-      console.log('en controller  22222222222',user);
-      return user;
-    } else {
-      res.status(404).send('Not found')
-    }
-
-  } catch (error) {
-    res.status(500).send('Something happened:', error);
-  }
-}

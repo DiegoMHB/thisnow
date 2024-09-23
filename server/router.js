@@ -5,9 +5,9 @@ const users = require('./controllers/user-controllers');
 
 //USERS:
 
-router.post('/user', users.newUser)
+router.post('/register', users.newUser);
+router.post('/login', users.userLogin);
 router.get('/users', users.getAllUsers);
-router.get('/user/:id', users.getUser);
 
 //POSTS:
 // router.get('/posts', posts.getAllPosts);

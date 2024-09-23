@@ -1,9 +1,8 @@
 import { NavLink, Outlet } from "react-router-dom";
 import { useLocation } from "react-router-dom";
-import  Map from "../views/map"
-
-// import Profile from "../views/profile";
+import  Map from "../views/map";
 import { useState } from "react";
+import Home from "../sub_components/home";
 
 function RootLayout() {
   const [clicked, setClicked] = useState(false);
@@ -15,11 +14,7 @@ function RootLayout() {
       <div id="rootLayout">
         <main id="main">
           {location.pathname === "/" && clicked==false ? (
-            <div className="V_centered">
-              <div className="capsule_big flex_center center inverted">
-                <h2 onClick={()=>setClicked(true)}>THIS NOW </h2>
-              </div>
-            </div>
+            <Home setClicked={setClicked}></Home>
           ) :
           location.pathname === "/" && clicked=== true?
           <Map></Map>:
