@@ -10,8 +10,7 @@ exports.userLogin = async (req, res) => {
       res.status(200).send(user);
       return user;
     } else {
-      res.status(404);
-      res.send(user)
+      res.status(404).send(user)
     }
     
   } catch (error) {
@@ -24,12 +23,10 @@ exports.newUser = async (req, res) => {
   try {
     
     const user = req.body;
-    console.log('CONTROLLERS',user)
     const newUser = model.newUser(user);
 
     if (newUser) {
-      res.status(201);
-      res.send(user);
+      res.status(201).send(user);
     } else {
       res.status(400).send('Couldnt create user')
     }
@@ -46,9 +43,7 @@ exports.getAllUsers = async (req, res) => {
     const users = await model.getAllUsers();
 
     if (users) {
-      res.status(200);
-      res.send(users)
-      return users
+      res.status(200).send(users);
     } else {
       res.status(404).send('Couldnt get Users')
     }
@@ -57,4 +52,20 @@ exports.getAllUsers = async (req, res) => {
     res.status(500).send('Something happened:', error);
   }
 }
+
+
+exports.getUserById = async (req, res) => {
+  try {
+    const user = await model.getUserById(req.params.id); 
+
+    if (user) {
+      res.status(200).send(user);
+      console.log(user)
+    } else {
+      res.status(404).send('Couldn’t find the user');
+    }
+  } catch (error) {
+    res.status(500).send('Something went wrong:', error);
+  }
+};
 

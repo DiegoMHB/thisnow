@@ -2,8 +2,13 @@ import "../../App.css";
 import { useSelector } from "react-redux";
 export const ProfileHeader = () => {
   
-  const user = useSelector((state) => state.user.user);
-  const member_since = user.member_since;
+  const postUser = useSelector((state) => state.user.postUser);
+
+  if (!postUser._id) {
+    return null;
+  }
+
+  const member_since = postUser.dateLogin;
   const date = new Date(member_since);
 
   const formattedDate = date.toLocaleString('en-US', {
@@ -12,21 +17,21 @@ export const ProfileHeader = () => {
     day: 'numeric',
     
   });
-  console.log(formattedDate)
+  console.log(postUser)
   
 
   return (
     <section id="user_profile" className="genericBox bg_blue">
-      <img src={user.profile_picture} alt={user.profile_picture} />
+      <img src={postUser.profile_picture} alt={postUser.profile_picture} />
       <div id="user_profile_det">
-        <h3>{user.username}</h3>
+        <h3>{postUser.username}</h3>
         <div className="smallFontCont ">
           <p className="smallFont">Member since:</p>
           <p className="smallFont bold">{formattedDate}</p>
         </div>
         <div className="smallFontCont mgT5">
           <p className="smallFont">Posted:</p>
-          <p className="smallFont bold">{user.posts ? user.posts.length : 0}</p>
+          <p className="smallFont bold">{postUser.posts ? postUser.posts.length : 0}</p>
         </div>
         <div className="smallFontCont mgT5">
           <p className="smallFont">(status):</p>

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { fetchUser } from "../../features/userSlice";
+import { login } from "../../features/userSlice";
 
 export default function Login() {
 
@@ -13,7 +13,7 @@ export default function Login() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(fetchUser({ username, password }));
+    dispatch(login({ username, password }));
     setPassword("");
     setUsername("");
   };

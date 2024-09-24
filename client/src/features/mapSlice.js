@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
-  coords: [0, 0],
+  coordinates: [0, 0],
   loading: false,
   error: null,
 }
@@ -15,7 +15,7 @@ export const mapSlice = createSlice({
       state.error = null;
     },
     getCoordsSuccess: (state, action) => {
-      state.coords = action.payload;
+      state.coordinates = action.payload;
       state.loading = false;
     },
     getCoordsFailure: (state, action) => {

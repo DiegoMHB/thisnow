@@ -1,28 +1,34 @@
 import "leaflet/dist/leaflet.css";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import { divIcon } from "leaflet";
-import { mapUtilities } from "../../assets/mapUtilities";
+
+import { useEffect,useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { getCoords } from "../../features/mapSlice";
+
 import { SearchBar } from "../sub_components/searchBar";
-import { useState } from "react";
+
+import { getCoords } from "../../features/mapSlice";
+import { mapUtilities } from "../../assets/mapUtilities";
+import { fetchPosts } from "../../features/postsSlice";
+
 
 const Map = () => {
-  const [search, setSearch] = useState();
+  const [search, setSearch] = useState('');
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const posts = useSelector((state) => state.posts.posts);
-  const { coords, loading, error } = useSelector((state) => state.map);
+
+  const { coordinates, loading, error } = useSelector((state) => state.map);
 
   useEffect(() => {
     dispatch(getCoords());
+    dispatch(fetchPosts())
   }, [dispatch]);
 
   if (loading) {
-    return <div>Loading...</div>; // Spinner simple
+    return <div>Loading...</div>; // Spinner!!!!
   }
 
   if (error) {
@@ -35,7 +41,7 @@ const Map = () => {
 
       <section className="flex_center center">
         <MapContainer
-          center={coords}
+          center={coordinates}
           zoom={15}
           className="map_box generic_box center"
           id="map"
@@ -46,7 +52,7 @@ const Map = () => {
           />
           {posts.map((post) => (
             <Marker
-              key={post.postId}
+              key={post._id}
               position={[
                 post.coordinates[0], //
                 post.coordinates[1], //
@@ -65,7 +71,7 @@ const Map = () => {
                   <button
                     className="popUp_button inverted"
                     onClick={() => {
-                      navigate(`/user/${post.userId}/post/${post.postId}`, {
+                      navigate(`/user/${post.user_id}/post/${post._id}`, {
                         replace: true,
                       });
                     }}

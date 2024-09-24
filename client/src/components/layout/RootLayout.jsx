@@ -8,7 +8,7 @@ import { useSelector } from "react-redux";
 function RootLayout() {
   const [clicked, setClicked] = useState(false);
   const location = useLocation();
-  const user = useSelector((state) => state.user.user);
+  const user = useSelector((state) => state.user);
 
   return (
     <div className="bg_degradado">
@@ -32,16 +32,33 @@ function RootLayout() {
             <NavLink className="capsule no_dec inverted " to="/tags">
               Tags
             </NavLink>
+            {user.isValidated?
             <NavLink
               className="capsule no_dec inverted"
-              to="user/:userId/post/:postId"
+              to="/posts"
             >
               Posts
+            </NavLink>:
+              <NavLink
+              className="capsule no_dec inverted"
+              to="/Reviews"
+            >
+              Reviews
             </NavLink>
-            <NavLink className="capsule no_dec inverted" to={`/user/${user._id
-            }`}>
+            }
+
+
+            {user.isValidated?
+            <NavLink className="capsule no_dec inverted" to={`/user/${user.user._id}`}>
               Profile
-            </NavLink>
+            </NavLink>:
+            <NavLink className="capsule no_dec inverted"
+            onClick={() => setClicked(false)}
+            to={`/`}
+            >
+            Home
+          </NavLink>
+            }
           </nav>
         </footer>
       </div>

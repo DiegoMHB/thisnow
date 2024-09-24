@@ -1,13 +1,11 @@
 import mapboxgl from "mapbox-gl";
-import {MapContainer} from 'react-leaflet';
 import { mapContext } from "./map-context";
 import { useState, useEffect, useRef } from "react";
-// import { useNavigate } from "react-router-dom";
 
 import data from "../../mock-data.json";
 
 //this function populates geojson object, needed to display markers
-//it should go only throw the posts wich coords are close to the map location
+//it should go only throw the posts wich coordinates are close to the map location
 //lazy load?
 //THIS will be an apiService that fetchs from DB
 function populateFeatures(posts) {
@@ -37,7 +35,7 @@ export const MapProvider = ({ children }) => {
   // const navigate = useNavigate();
   const mapRef = useRef();
   const [map, setMap] = useState(null);
-  const [coords, setCoords] = useState(null);
+  const [coordinates, setCoords] = useState(null);
   // const [features, setFeatures] = useState({});//no needed
 
   //accessToken
@@ -48,7 +46,7 @@ export const MapProvider = ({ children }) => {
   useEffect(() => {
     navigator.geolocation.getCurrentPosition(
       (position) => {
-        const res = [position.coords.longitude, position.coords.latitude];
+        const res = [position.coordinates.longitude, position.coordinates.latitude];
         setCoords(res);
       },
       (error) => {
@@ -64,11 +62,11 @@ export const MapProvider = ({ children }) => {
 
   //set and customize the map that is gonna be displayed
   useEffect(() => {
-    if (!coords) return;
+    if (!coordinates) return;
     //
     mapRef.current = new mapboxgl.Map({
       container: "map", // container ID
-      center: coords,
+      center: coordinates,
       style: "mapbox://styles/mapbox/standard",
       config: {
         // Initial configuration for the Mapbox Standard style set above. By default, its ID is `basemap`.
@@ -129,11 +127,6 @@ export const MapProvider = ({ children }) => {
           .addTo(mapRef.current);
 
 
-        // button.addEventListener("click", () => console.log("clicked"));
-
-        popUpContent.querySelector('#navigate-details').addEventListener('click',()=>
-          console.log('clicked')
-        )
       }
     });
 
@@ -141,7 +134,7 @@ export const MapProvider = ({ children }) => {
 
     // unmounting the component when closing
     return () => mapRef.current.remove();
-  }, [coords]);
+  }, [coordinates]);
 
   return (
     <mapContext.Provider

@@ -7,10 +7,8 @@ const userSchema = new mongoose.Schema({
   email: { type: String, required: true },
   password: { type: String, required: true },
   profile_picture: { type: String, required: false },
-  posts: Array,
-  member_since: { type: Date, default: Date.now },
-  friends: Array,
-});
+  posts: Array},
+  { timestamps: true });
 
 const userModel = mongoose.model('User', userSchema);
 
@@ -28,7 +26,6 @@ const login = async function (username, pass) {
 
 const newUser = async function (user) {
   const newUser = await userModel.create(user);
-  console.log(newUser)
   return newUser
 }
 
@@ -37,8 +34,16 @@ const getAllUsers = async function () {
   return users
 }
 
+const getUserById = async function (id) {
+  const user = await userModel.findById(id);
+  if (!user) {
+    return null; 
+  }
+  return user;
+};
 
 
 
 
-module.exports = { newUser, getAllUsers, login }
+
+module.exports = { newUser, getAllUsers, login , getUserById}

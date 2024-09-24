@@ -7,17 +7,24 @@ const initialState = {
   error: "",
   isValidated: false,
   user: {
-    userId: "",
+    _id: "",
     username: "",
     email: "",
     profile_picture: "",
     posts: [],
-  }
+  },
+  postUser: {
+    _id: "",
+    username: "",
+    email: "",
+    profile_picture: "",
+    posts: [],
+  },
 }
 
 //login
-export const fetchUser = createAsyncThunk(
-  'user/fetchUser',
+export const login = createAsyncThunk(
+  'user/login',
   async ({ username, password }, thunkAPI) => {
     try {
       const response = await fetch('http://localhost:3000/login', {
@@ -43,7 +50,6 @@ export const newUser = createAsyncThunk(
   'user/newUser',
   async (user, thunkAPI) => {
     try {
-      console.log('en funcion: ARGUMENTO',user)
       const response = await fetch('http://localhost:3000/register', {
         method: "POST",
         body: JSON.stringify(user),
@@ -52,17 +58,33 @@ export const newUser = createAsyncThunk(
         },
       });
       if (!response.ok) {
-        console.log('en funcion: RESPONSE.ERROR', response)
         throw new Error('Failed to create a new user account');
       }
       const data = await response.json();
-      console.log('en funcion: RESPONSE', data)
       return data
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }
   }
 )
+
+//fetch a user by ID
+export const fetchUserById = createAsyncThunk(
+  'user/fetchUserById',
+  async (id, thunkAPI) => {
+    try {
+      const response = await fetch(`http://localhost:3000/user/${id}`);
+      if (!response.ok) {
+        throw new Error('Failed to fetch user. Please check the ID.');
+      }
+      const data = await response.json();
+      console.log(data);
+      return data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
 
 
 const userSlice = createSlice({
@@ -72,16 +94,16 @@ const userSlice = createSlice({
   extraReducers: builder => {
 
     //LOGIN
-    builder.addCase(fetchUser.pending, state => {
+    builder.addCase(login.pending, state => {
       state.loading = true
     })
-    builder.addCase(fetchUser.fulfilled, (state, action) => {
+    builder.addCase(login.fulfilled, (state, action) => {
       state.isValidated = true;
       state.loading = false;
       state.user = action.payload;
       state.error = ''
     })
-    builder.addCase(fetchUser.rejected, (state, action) => {
+    builder.addCase(login.rejected, (state, action) => {
       state.isValidated = false;
       state.loading = false;
       state.user = {};
@@ -104,8 +126,22 @@ const userSlice = createSlice({
       state.error = action.payload
     })
 
-  },
 
+    //FETCH USER BY ID
+    builder.addCase(fetchUserById.pending, state => {
+      state.loading = true
+    })
+    builder.addCase(fetchUserById.fulfilled, (state, action) => {
+      state.loading = false;
+      state.error = '';
+      state.postUser = action.payload;
+    })
+    builder.addCase(fetchUserById.rejected, (state, action) => {
+      state.loading = false;
+      state.error = action.payload
+    })
+
+  }
 })
 
 export default userSlice.reducer;
