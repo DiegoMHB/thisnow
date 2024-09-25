@@ -24,6 +24,7 @@ exports.newPost = async (req,res ) => {
   try {
     
     const post = req.body;
+    console.log(post)
     const newPost = await model.newPost(post);
     console.log(newPost)
     if (newPost) {

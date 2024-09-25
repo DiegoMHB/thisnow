@@ -12,7 +12,7 @@ function ImageSlider({ images }) {
   };
 
   if (!Array.isArray(images) || images.length === 0) {
-    return <p>No images to display</p>;
+    return null;
   }
 
   return (

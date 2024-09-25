@@ -1,7 +1,7 @@
 import { useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { fetchPosts, newPost } from "../../features/postsSlice";
+import { newPost } from "../../features/postsSlice";
 
 const emptyForm = {
   tag: "",
@@ -32,10 +32,12 @@ export default function NewPost() {
   };
 
   const reqBody = { ...form, ...userMapProps, category: radio, coordinates };
+  console.log(reqBody)
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(newPost(reqBody)).then(res =>  navigate(`/user/${_id}/post/${res.payload._id}`))
+    dispatch(newPost(reqBody)); 
+    navigate(`/user/${_id}`)
  
     setForm(emptyForm);
   };
@@ -43,12 +45,6 @@ export default function NewPost() {
   const handleButtonClick = () => {
     fileInputRef.current.click();
   };
-
-  // const loggedIn = useSelector((state) => state.user.isValidated);
-
-  // if (loggedIn) {
-  //   navigate(`/map`, { replace: true });
-  // }
 
   return (
     <div className="V_centered">

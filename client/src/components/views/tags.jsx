@@ -2,6 +2,8 @@ import { useSelector } from "react-redux";
 import { SearchBar } from "../sub_components/searchBar";
 import { useState } from "react";
 
+const berlinTags= ["Coding", "Love", "Clubs", "Concerts", "Art", "Taxi", "Food", "Free", "Exhibitions", "Techno", "Bookclub"]
+
 function Tags() {
   const posts = useSelector((state) => state.posts.posts);
   const [search, setSearch] = useState("");
@@ -22,6 +24,9 @@ function Tags() {
                 </div>
               );
             })}
+            <div className="capsule inverted">
+                  <h4>#love</h4>
+                </div>
           </div>
         </div>
         <div className="genericBox opacity7">
@@ -29,10 +34,10 @@ function Tags() {
             <h4 className="mgL12">Trends in Berlin:</h4>{" "}
           </div>
           <div id="tags_list">
-            {posts.map((post) => {
+            {berlinTags.map((tag,i) => {
               return (
-                <div key={post.postId} className="capsule inverted">
-                  <h4>#{post.tag}</h4>
+                <div key={i} className="capsule inverted">
+                  <h4>#{tag}</h4>
                 </div>
               );
             })}

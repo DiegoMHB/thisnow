@@ -1,8 +1,7 @@
 import { useRef, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { newUser } from "../../features/userSlice";
-
 
 const emptyForm = {
   username: "",
@@ -10,22 +9,22 @@ const emptyForm = {
   email: "",
   password: "",
   city: "",
+  profile_picture: "",
 };
 
 export default function Signin() {
-
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  
+
   const [form, setForm] = useState(emptyForm);
   const fileInputRef = useRef(null);
 
-
   const handleChange = (e) => {
-    const { name, value} = e.target;
+    const { name, value } = e.target;
+    console.log(form);
     setForm({
       ...form,
-      [name]: value, 
+      [name]: value,
     });
   };
 
@@ -35,19 +34,15 @@ export default function Signin() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
     dispatch(newUser(form));
     setForm(emptyForm);
-  };
-
-  const loggedIn = useSelector((state) => state.user.isValidated);
-  
-  if(loggedIn) {
-    navigate(`/map`, {replace: true})
+    navigate(`/map`, { replace: true });
   };
 
   return (
     <div className="V_centered">
-      <h3>CREATE AN ACCOUNT:</h3>
+      <h3>CREATE AN ACCOUNT :</h3>
       <form id="signin" className="genericBox" onSubmit={handleSubmit}>
         <input
           placeholder="...username*"
@@ -101,10 +96,13 @@ export default function Signin() {
             ref={fileInputRef}
             style={{ display: "none" }}
             onChange={(e) => {
-              setForm(e.target.files[0])
-                ? (document.querySelector("#fileName").innerHTML = "")
-                : (document.querySelector("#fileName").innerHTML =
-                    "No file chosen");
+              setForm({ ...form, profile_picture: e.target.files[0] });
+              {
+                e.target.files[0]
+                  ? (document.querySelector("#fileName").innerHTML = "")
+                  : (document.querySelector("#fileName").innerHTML =
+                      "No file chosen");
+              }
             }}
           />
           <button

@@ -9,11 +9,12 @@ import Login from "./components/views/login";
 import Map from "./components/views/map";
 import NewPost from "./components/views/createPost";
 import Post from "./components/views/post";
+import PostList from "./components/views/postList";
 import Profile from "./components/views/profile";
+import Reviews from "./components/views/reviews";
 import RootLayout from "./components/layout/RootLayout";
 import Signin from "./components/views/singin";
 import Tags from "./components/views/tags";
-import PostList from "./components/views/postList";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -27,6 +28,7 @@ const router = createBrowserRouter(
       <Route path="user/:userId" element={<Profile />} />
       <Route path="/signin" element={<Signin />} />
       <Route path="/tags" element={<Tags />} />
+      <Route path="/reviews" element={<Reviews />} />
 
     </Route>
   )

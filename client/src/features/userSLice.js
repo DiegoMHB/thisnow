@@ -78,7 +78,6 @@ export const fetchUserById = createAsyncThunk(
         throw new Error('Failed to fetch user. Please check the ID.');
       }
       const data = await response.json();
-      console.log(data);
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -90,7 +89,11 @@ export const fetchUserById = createAsyncThunk(
 const userSlice = createSlice({
   name: 'user',
   initialState,
-  reducers: {},
+  reducers: {
+    invalidate (state) {
+      state.isValidated = false;
+    },
+  },
   extraReducers: builder => {
 
     //LOGIN
@@ -147,5 +150,5 @@ const userSlice = createSlice({
 export default userSlice.reducer;
 
 
-// export const { logIn, logOut } = userSlice.actions
+export const { invalidate } = userSlice.actions
 

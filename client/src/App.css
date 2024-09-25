@@ -21,6 +21,13 @@
   padding: 10px;
   background-color: white;
 }
+.genericBox3 {
+  max-height: 45vh;
+  border-radius: 10px;
+  margin: 10px;
+  padding: 10px;
+  background-color: white;
+}
 
 .box_post {
   margin: 10px;
@@ -29,13 +36,19 @@
   /* background-color: rgba(255, 255, 255,0.4); */
 }
 
+.menu_line {
+  display: flex;
+  justify-content:space-evenly ;
+  margin: 0px 12px;
+}
+
 .capsule {
   display: flex;
   justify-content: space-around;
   align-items: center;
   height: 20px;
   border-radius: 28px;
-  padding: 12px 15px;
+  padding: 12px 12px;
   background-color: rgb(255, 255, 255);
 }
 
@@ -48,11 +61,7 @@
   margin: 10px 0px;
 }
 
-.menu_line {
-  display: flex;
-  justify-content: space-between;
-  margin: 10px 12px;
-}
+
 
 .inline {
   display: flex;
@@ -103,7 +112,6 @@
   width: 100%;
   display: flex;
   justify-content: space-between;
-  padding-right: 10px;
 }
 
 .smallFont {
@@ -125,6 +133,10 @@
 /* Position */
 .mgT5 {
   margin-top: 5px;
+}
+
+.mgT40 {
+  margin-top: 40px;
 }
 .mgL12 {
   margin-left: 12px;
@@ -153,6 +165,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  gap:px
 }
 
 /* RootLayout */
@@ -192,7 +205,7 @@
 
 #user_profile_det {
   align-items: center;
-  flex: 2;
+  flex: 1;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -225,29 +238,21 @@
 
 /* PostDetails */
 
-/* #post_list :first-child {
-  border-top: 1px solid grey;
-} */
-
-#post_list {
-  margin-top: 10px;
-  padding: 15px;
-  height: 80vh;
-  border-bottom: 1px solid grey;
-  overflow-y: scroll;
-  
+inver_order{
+  display: flex;
+  flex-direction: column-reverse;
 }
 
 /*Footer*/
 #footer {
+  display: flex;
+  justify-content: center;
   align-items: stretch;
   height: 50px;
-  display: flex;
   align-items: center;
-  justify-content: center;
   border-top: 1px solid #ccc;
-  z-index: 1000;
   text-decoration: none;
+  
 }
 
 #footer nav {
@@ -259,36 +264,21 @@
   text-decoration: none;
 }
 
+
+
+/*Views*/
+
+
+
 /*LogIn*/
 .widthEl {
   width: 80vw;
 }
 
-/*SignIn*/
-textarea {
-  height: 100px;
-}
-
-fieldset {
-  gap: 15px;
-  display: flex;
-  justify-content: flex;
-  color: rgb(90, 90, 90);
-}
-
-/*SignIn*/
-#uploadFile {
-  display: flex;
-  justify-content: center;
-  align-items: baseline;
-  gap: 15px;
-  margin-top: 20px;
-}
-
 /* map */
 
 #map {
-  height: 80vh;
+  height: 78vh;
   width: 95%;
   border-radius: 10px;
   margin-top: 12px;
@@ -342,12 +332,70 @@ fieldset {
   align-self: center;
 }
 
-/*Views*/
+
+#post_list {
+  margin-top: 10px;
+  padding: 15px;
+  height: 78vh;
+  border-bottom: 1px solid grey;
+  overflow-y: scroll;
+  
+}
+
+#post_list_prof {
+  
+  margin-top: 10px;
+  padding: 15px;
+  height: 65vh;
+  border-bottom: 1px solid grey;
+  overflow-y: scroll;
+  
+}
+
+/*Reviews*/
+
+.reviewBox{
+  height: 140px;
+}
+
+/*SignIn*/
+textarea {
+  height: 100px;
+}
+
+fieldset {
+  gap: 15px;
+  display: flex;
+  justify-content: flex;
+  color: rgb(90, 90, 90);
+}
+
+/*SignIn*/
+#uploadFile {
+  display: flex;
+  justify-content: center;
+  align-items: baseline;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+
 
 /* Login */
 
 #login input {
   font-size: 15px;
+}
+
+
+/*Post-View*/
+
+#Slider {
+  height: 250px;
+}
+
+#post_details {
+  margin-bottom: 15px;
 }
 
 /*Tags-View*/
@@ -360,14 +408,4 @@ fieldset {
   height: max-content;
   padding: 10px 5px;
   gap: 5px;
-}
-
-/*Post-View*/
-
-#Slider {
-  height: 250px;
-}
-
-#post_details {
-  margin-bottom: 15px;
 }

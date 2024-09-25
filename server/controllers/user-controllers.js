@@ -1,6 +1,5 @@
 const model = require('../db/models/usersModel');
 
-
 exports.userLogin = async (req, res) => {
   try {
 
@@ -12,7 +11,7 @@ exports.userLogin = async (req, res) => {
     } else {
       res.status(404).send(user)
     }
-    
+
   } catch (error) {
     res.status(500).send('Something happened:', error);
   }
@@ -21,9 +20,8 @@ exports.userLogin = async (req, res) => {
 
 exports.newUser = async (req, res) => {
   try {
-    
-    const user = req.body;
-    const newUser = model.newUser(user);
+    const user = req.body
+    const newUser = await model.newUser(user);
 
     if (newUser) {
       res.status(201).send(user);
@@ -56,7 +54,7 @@ exports.getAllUsers = async (req, res) => {
 
 exports.getUserById = async (req, res) => {
   try {
-    const user = await model.getUserById(req.params.id); 
+    const user = await model.getUserById(req.params.id);
 
     if (user) {
       res.status(200).send(user);
