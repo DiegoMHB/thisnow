@@ -8,7 +8,6 @@ async function main () {
   try {
     await mongoose.connect(url);
     console.log('Connected successfully to server');
-  
     return 'done.';
     
   } catch (error) {

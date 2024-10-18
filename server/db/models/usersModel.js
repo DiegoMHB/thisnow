@@ -1,6 +1,5 @@
 const mongoose = require('../index.js');
 
-
 const userSchema = new mongoose.Schema({
   username: { type: String, required: true },
   name: { type: String, required: true },
@@ -11,7 +10,6 @@ const userSchema = new mongoose.Schema({
   { timestamps: true });
 
 const userModel = mongoose.model('User', userSchema);
-
 
 const login = async function (username, pass) {
   const user = await userModel.findOne({ username });
@@ -41,9 +39,5 @@ const getUserById = async function (id) {
   }
   return user;
 };
-
-
-
-
 
 module.exports = { newUser, getAllUsers, login , getUserById}
