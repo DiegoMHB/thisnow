@@ -1,11 +1,11 @@
 import { useSelector } from "react-redux";
-import { SearchBar } from "../sub_components/searchBar";
+import { SearchBar } from "../components/searchBar";
 import { useState } from "react";
-import PostDetails from "../sub_components/postDetails";
+import PostDetails from "../components/postDetails";
 
 function PostList() {
   const posts = useSelector((state) => state.posts.posts);
-  const [search, setSearch] = useState('');
+  const [search, setSearch] = useState("");
 
   return (
     <>
@@ -15,16 +15,10 @@ function PostList() {
           <div>
             <h4 className="mgL12">Posts around you:</h4>{" "}
           </div>
-         
-            
-            {posts.map((post) => {
-              return (
-                <PostDetails key={post.post_Id} post={post}>
-    
-                </PostDetails>
-              );
-            })}
-         
+
+          {posts.map((post) => {
+            return <PostDetails key={post.post_Id} post={post}></PostDetails>;
+          })}
         </div>
       </div>
     </>

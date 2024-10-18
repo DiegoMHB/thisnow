@@ -1,6 +1,6 @@
+ 
+ 
  export const SearchBar = ({search, setSearch}) => {
-
-  
 
   function handleSubmit(e){
     e.preventDefault();
@@ -8,7 +8,6 @@
   }
 
   return (
-
       <section className="box_post noMargin">
         <form onSubmit={handleSubmit} id='form_search' className="genericBox2 bg_blue smallFontCont">
           <label htmlFor="search" className="smallFont bold">Search:</label>
@@ -20,7 +19,6 @@
           </button>
         </form>
       </section>
-    
   )
 }
 

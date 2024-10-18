@@ -32,7 +32,6 @@ export default function NewPost() {
   };
 
   const reqBody = { ...form, ...userMapProps, category: radio, coordinates };
-  console.log(reqBody)
 
   const handleSubmit = (e) => {
     e.preventDefault();

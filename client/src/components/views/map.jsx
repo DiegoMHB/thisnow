@@ -2,19 +2,18 @@ import "leaflet/dist/leaflet.css";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import { divIcon } from "leaflet";
 
-import { useEffect,useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 
-import { SearchBar } from "../sub_components/searchBar";
+import { SearchBar } from "../components/searchBar";
 
 import { getCoords } from "../../features/mapSlice";
 import { mapUtilities } from "../../assets/mapUtilities";
 import { fetchPosts } from "../../features/postsSlice";
 
-
 const Map = () => {
-  const [search, setSearch] = useState('');
+  const [search, setSearch] = useState("");
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -24,7 +23,7 @@ const Map = () => {
 
   useEffect(() => {
     dispatch(getCoords());
-    dispatch(fetchPosts())
+    dispatch(fetchPosts());
   }, [dispatch]);
 
   if (loading) {
@@ -66,18 +65,18 @@ const Map = () => {
               })}
             >
               <Popup id="popUp" className="custom-popup ">
-                  <h3 className="bold">{post.username}</h3>
-                  <p>{post.details}</p>
-                  <button
-                    className="popUp_button inverted"
-                    onClick={() => {
-                      navigate(`/user/${post.user_id}/post/${post._id}`, {
-                        replace: true,
-                      });
-                    }}
-                  >
-                    GO TO POST
-                  </button>
+                <h3 className="bold">{post.username}</h3>
+                <p>{post.details}</p>
+                <button
+                  className="popUp_button inverted"
+                  onClick={() => {
+                    navigate(`/user/${post.user_id}/post/${post._id}`, {
+                      replace: true,
+                    });
+                  }}
+                >
+                  GO TO POST
+                </button>
               </Popup>
             </Marker>
           ))}

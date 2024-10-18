@@ -1,5 +1,5 @@
 import { useSelector } from "react-redux";
-import { SearchBar } from "../sub_components/searchBar";
+import { SearchBar } from "../components/searchBar";
 import { useState } from "react";
 
 const berlinTags= ["Coding", "Love", "Clubs", "Concerts", "Art", "Taxi", "Food", "Free", "Exhibitions", "Techno", "Bookclub"]

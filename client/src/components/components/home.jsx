@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { fetchPosts } from "../../features/postsSlice";
 
-export default function Home({ setClicked }) {
+export default function Home({ setIsClicked }) {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -12,7 +12,7 @@ export default function Home({ setClicked }) {
         <h2
           onClick={() => {
             dispatch(fetchPosts());
-            setClicked(true);
+            setIsClicked(true);
           }}
         >
           EXPLORE THIS NOW

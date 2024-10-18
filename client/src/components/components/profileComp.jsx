@@ -1,9 +1,6 @@
 import "../../App.css";
-// import { useSelector } from "react-redux";
 export const ProfileHeader = ({user}) => {
   
-  // const postUser = useSelector((state) => state.user.postUser);
-
   const date = new Date(user.createdAt);
 
   const formattedDate = date.toLocaleString('en-US', {

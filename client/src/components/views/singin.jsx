@@ -21,7 +21,6 @@ export default function Signin() {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    console.log(form);
     setForm({
       ...form,
       [name]: value,

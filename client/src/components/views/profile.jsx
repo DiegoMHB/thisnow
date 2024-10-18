@@ -1,9 +1,9 @@
-import { ProfileHeader } from "../sub_components/profileComp";
+import { ProfileHeader } from "../components/profileComp";
 import { useSelector } from "react-redux";
-import PostDetails from "../sub_components/postDetails";
+import PostDetails from "../components/postDetails";
 import { NavLink } from "react-router-dom";
 import { invalidate } from "../../features/userSlice";
-import { useDispatch } from 'react-redux';
+import { useDispatch } from "react-redux";
 
 function Profile() {
   const dispatch = useDispatch();
@@ -34,19 +34,21 @@ function Profile() {
         })}
       </div>
       <div className="flex_center center">
-       
-          <div className="V_centered">
-            <NavLink className="capsule_big no_dec flex_center center  inverted widthEl " to="/newpost">
-              CREATE A NEW POST!!!
-            </NavLink>
-            <NavLink 
-            className="capsule_big no_dec flex_center center  inverted widthEl" 
-            onClick={dispatch(invalidate()) }
-            to="/">
-              LOG OUT
-            </NavLink>
-          </div>
-        
+        <div className="V_centered">
+          <NavLink
+            className="capsule_big no_dec flex_center center  inverted widthEl "
+            to="/newpost"
+          >
+            CREATE A NEW POST!!!
+          </NavLink>
+          <NavLink
+            className="capsule_big no_dec flex_center center  inverted widthEl"
+            onClick={dispatch(invalidate())}
+            to="/"
+          >
+            LOG OUT
+          </NavLink>
+        </div>
       </div>
     </>
   );
