@@ -1,9 +1,9 @@
-import { ProfileHeader } from "../components/profileComp";
-import PostDetails from "../components/postDetails";
-import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { fetchUserById } from "../../features/userSlice";
+import { useParams } from "react-router-dom";
+import { fetchUserById } from "../features/userSlice";
+import { ProfileHeader } from "../components/profileComp";
+import PostDetails from "../components/PostDetails";
 
 function Post() {
   const { postId, userId } = useParams();
@@ -36,7 +36,7 @@ function Post() {
     <>
       {user._id && <ProfileHeader user={user} />}
       <p className="smallFont bold mgL12">One post is active:</p>
-      <PostDetails post={post} />
+      <PostDetails post={post}></PostDetails>
     </>
   );
 }

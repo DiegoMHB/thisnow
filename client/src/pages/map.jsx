@@ -8,9 +8,9 @@ import { useSelector, useDispatch } from "react-redux";
 
 import { SearchBar } from "../components/searchBar";
 
-import { getCoords } from "../../features/mapSlice";
-import { mapUtilities } from "../../assets/mapUtilities";
-import { fetchPosts } from "../../features/postsSlice";
+import { getCoords } from "../features/mapSlice";
+import { mapUtilities } from "../assets/mapUtilities";
+import { fetchPosts } from "../features/postsSlice";
 
 const Map = () => {
   const [search, setSearch] = useState("");

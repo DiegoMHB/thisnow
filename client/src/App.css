@@ -42,6 +42,47 @@
   margin: 0px 12px;
 }
 
+/*BUTTONS */
+
+.B_big_inverted {
+  border-radius: 22px;
+  padding: 12px;
+  padding: 15px;
+  margin: 10px 0px;
+  background-color: black;
+  color: white;
+  width: 80vw;
+  display: flex;
+  justify-content: center;
+}
+
+.B_big {
+  border-radius: 22px;
+  padding: 12px;
+  padding: 15px;
+  margin: 10px 0px;
+  font-weight: bold;
+  width: 80vw;
+  display: flex;
+  justify-content: center;
+  background-color: rgb(255, 255, 255);
+}
+
+.B_small_I {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 20px;
+  border-radius: 28px;
+  padding: 12px 20px;
+  text-decoration: none;
+  background-color: black;
+  color: white;
+}
+
+
+
+
 .capsule {
   display: flex;
   justify-content: space-around;
@@ -94,10 +135,7 @@
   box-shadow: 2px 2px 7px rgb(89, 89, 166);
 }
 
-.bg_degradado {
-  background-color: rgb(245, 242, 242);
-  padding: 10px;
-}
+
 .opacity4 {
   background-color: rgba(245, 242, 242, 0.7);
 }
@@ -172,13 +210,18 @@
 .thisNow {
   display: none;
 }
+#background{
+  padding:10px;
+  height: 100vh;
+
+}
 #rootLayout {
-  background: linear-gradient(45deg, rgb(198, 238, 247), rgb(224, 245, 230));
-  height: calc(100vh - 20px);
-  border: 1px solid rgb(171, 206, 214);
-  border-radius: 15px;
   display: flex;
   flex-direction: column;
+  height: 100%;
+  border: 1px solid rgb(171, 206, 214);
+  border-radius: 15px;
+  background: linear-gradient(45deg, rgb(198, 238, 247), rgb(224, 245, 230));
 }
 
 #main {

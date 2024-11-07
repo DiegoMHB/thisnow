@@ -1,7 +1,7 @@
 import { useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { newPost } from "../../features/postsSlice";
+import { newPost } from "../features/postsSlice";
 
 const emptyForm = {
   tag: "",

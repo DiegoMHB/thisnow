@@ -1,13 +1,15 @@
-import { ProfileHeader } from "../components/profileComp";
 import { useSelector } from "react-redux";
-import PostDetails from "../components/postDetails";
-import { NavLink } from "react-router-dom";
-import { invalidate } from "../../features/userSlice";
 import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import PostDetails from "../components/PostDetails";
+import { ProfileHeader } from "../components/profileComp";
+import { invalidate } from "../features/userSlice";
 
 function Profile() {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user);
+  console.log(user);
   const posts = useSelector((state) => state.posts.posts);
 
   const userPosts = posts.filter((post) => user.user._id === post.user_id);
@@ -18,7 +20,6 @@ function Profile() {
 
       <div className="menu_line smallFont bold">
         <div className="capsule inverted">
-          {" "}
           <p>Searchs</p>
         </div>
         <div className="capsule inverted">
@@ -28,26 +29,36 @@ function Profile() {
           <p>Your Account</p>
         </div>
       </div>
+
       <div className="genericBox3 inver_order" id="post_list_prof">
         {userPosts.map((post) => {
           return <PostDetails key={post._id} post={post}></PostDetails>;
         })}
       </div>
+
       <div className="flex_center center">
         <div className="V_centered">
-          <NavLink
-            className="capsule_big no_dec flex_center center  inverted widthEl "
-            to="/newpost"
+          <div
+            className="B_big_inverted"
+            onClick={() => {
+              navigate(`/newpost`, {
+                replace: true,
+              });
+            }}
           >
             CREATE A NEW POST!!!
-          </NavLink>
-          <NavLink
-            className="capsule_big no_dec flex_center center  inverted widthEl"
-            onClick={dispatch(invalidate())}
-            to="/"
+          </div>
+          <div
+            className="B_big_inverted"
+            onClick={() => {
+              dispatch(invalidate());
+              navigate(`/`, {
+                replace: true,
+              });
+            }}
           >
             LOG OUT
-          </NavLink>
+          </div>
         </div>
       </div>
     </>

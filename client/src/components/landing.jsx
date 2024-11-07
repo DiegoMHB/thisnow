@@ -1,14 +1,14 @@
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { fetchPosts } from "../../features/postsSlice";
+import { fetchPosts } from "../features/postsSlice";
 
-export default function Home({ setIsClicked }) {
+export default function Landing({ setIsClicked }) {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
   return (
-    <div className="V_centered">
-      <section className="capsule_big flex_center center inverted widthEl">
+    <section className="V_centered">
+      <div className="B_big_inverted">
         <h2
           onClick={() => {
             dispatch(fetchPosts());
@@ -17,11 +17,11 @@ export default function Home({ setIsClicked }) {
         >
           EXPLORE THIS NOW
         </h2>
-      </section>
+      </div>
 
-      <section className="">
+      <section>
         <div
-          className="capsule_big bold widthEl flex_center center"
+          className="B_big"
           onClick={() => {
             dispatch(fetchPosts());
             navigate(`/login`, {
@@ -32,7 +32,7 @@ export default function Home({ setIsClicked }) {
           LOG IN
         </div>
         <div
-          className="capsule_big bold widthEl flex_center center"
+          className="B_big"
           onClick={() => {
             dispatch(fetchPosts());
             navigate(`/signin`, {
@@ -44,6 +44,6 @@ export default function Home({ setIsClicked }) {
           SIGN IN
         </div>
       </section>
-    </div>
+    </section>
   );
 }

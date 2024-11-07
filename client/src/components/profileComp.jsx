@@ -1,4 +1,3 @@
-import "../../App.css";
 export const ProfileHeader = ({user}) => {
   
   const date = new Date(user.createdAt);

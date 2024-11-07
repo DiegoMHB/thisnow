@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux";
-import { SearchBar } from "../components/searchBar";
 import { useState } from "react";
-import PostDetails from "../components/postDetails";
+import { SearchBar } from "../components/searchBar";
+import PostDetails from "../components/PostDetails";
 
 function PostList() {
   const posts = useSelector((state) => state.posts.posts);

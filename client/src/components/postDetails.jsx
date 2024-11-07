@@ -1,4 +1,3 @@
-/* eslint-disable react/no-unescaped-entities */
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { useSelector } from "react-redux";
@@ -16,7 +15,7 @@ function PostDetails({ post }) {
       <div id="post_details">
         <h3>#{post.tag}</h3>
         <div className="smallFontCont">
-          <p className="smallFont">"{post.details}"</p>
+          <p className="smallFont">`{post.details}`</p>
         </div>
         <div className="smallFontCont">
           <p className="smallFont">Adress:</p>
@@ -35,7 +34,7 @@ function PostDetails({ post }) {
         </div>
       ) : null}
 
-      {user._id !== post.user_id &&
+      {user._id !== post.user_id && (
         <div>
           <div className="menu_line center">
             <button className="capsule_big inverted bold ">
@@ -44,7 +43,7 @@ function PostDetails({ post }) {
             </button>
           </div>
         </div>
-      }
+      )}
     </section>
   );
 }

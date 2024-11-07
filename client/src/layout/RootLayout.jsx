@@ -1,8 +1,8 @@
-import Map from "../views/map";
-import Home from "../components/home";
-import { NavLink, Outlet,useLocation } from "react-router-dom";
-import { useSelector } from "react-redux";
 import { useState } from "react";
+import { NavLink, Outlet, useLocation } from "react-router-dom";
+import { useSelector } from "react-redux";
+import Map from "../pages/map";
+import Landing from "../components/landing";
 
 function RootLayout() {
   const [isClicked, setIsClicked] = useState(false);
@@ -10,11 +10,11 @@ function RootLayout() {
   const user = useSelector((state) => state.user);
 
   return (
-    <div className="bg_degradado">
+    <div id="background">
       <div id="rootLayout">
         <main id="main">
           {location.pathname === "/" && isClicked == false ? (
-            <Home setIsClicked={setIsClicked}></Home>
+            <Landing setIsClicked={setIsClicked}></Landing>
           ) : location.pathname === "/" && isClicked === true ? (
             <Map></Map>
           ) : (
@@ -24,31 +24,28 @@ function RootLayout() {
 
         <footer id="footer">
           <nav className="menu_line smallFont bold">
-            <NavLink className="capsule no_dec inverted" to="/map">
+            <NavLink className="B_small_I" to="/map">
               Map
             </NavLink>
-            <NavLink className="capsule no_dec inverted " to="/tags">
+            <NavLink className="B_small_I " to="/tags">
               Tags
             </NavLink>
             {user.isValidated ? (
-              <NavLink className="capsule no_dec inverted" to="/posts">
+              <NavLink className="B_small_I" to="/posts">
                 Posts
               </NavLink>
             ) : (
-              <NavLink className="capsule no_dec inverted" to="/Reviews">
+              <NavLink className="B_small_I" to="/Reviews">
                 Reviews
               </NavLink>
             )}
             {user.isValidated ? (
-              <NavLink
-                className="capsule no_dec inverted"
-                to={`/user/${user.user._id}`}
-              >
+              <NavLink className="B_small_I" to={`/user/${user.user._id}`}>
                 Profile
               </NavLink>
             ) : (
               <NavLink
-                className="capsule no_dec inverted"
+                className="B_small_I"
                 onClick={() => setIsClicked(false)}
                 to={`/`}
               >
