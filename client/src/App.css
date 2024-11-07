@@ -42,13 +42,27 @@
   margin: 0px 12px;
 }
 
-/*BUTTONS */
+/* INPUT */
+
+.I_transparent{
+  font-size: 15px;
+  width: 80vw;
+  display: flex;
+  justify-content: space-between;
+  margin-left: 12px;
+  margin-top: 25px;
+  border: none;
+  border-bottom: 1px solid grey;
+  outline: none;
+}
+
+
+/* BUTTONS */
 
 .B_big_inverted {
   border-radius: 22px;
-  padding: 12px;
   padding: 15px;
-  margin: 10px 0px;
+  margin: 15px auto;
   background-color: black;
   color: white;
   width: 80vw;
@@ -58,7 +72,6 @@
 
 .B_big {
   border-radius: 22px;
-  padding: 12px;
   padding: 15px;
   margin: 10px 0px;
   font-weight: bold;
@@ -121,10 +134,7 @@
   background-color: black;
   color: white;
 }
-.transButton {
-  background-color: white;
-  color: rgb(56, 55, 55);
-}
+
 
 /* .inverted:hover {
   background-color: rgb(47, 209, 163);
@@ -203,7 +213,6 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap:px
 }
 
 /* RootLayout */
@@ -413,7 +422,6 @@ fieldset {
   color: rgb(90, 90, 90);
 }
 
-/*SignIn*/
 #uploadFile {
   display: flex;
   justify-content: center;

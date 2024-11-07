@@ -11,7 +11,6 @@ const emptyForm = {
 };
 
 export default function NewPost() {
-
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -35,9 +34,9 @@ export default function NewPost() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(newPost(reqBody)); 
-    navigate(`/user/${_id}`)
- 
+    dispatch(newPost(reqBody));
+    navigate(`/user/${_id}`);
+
     setForm(emptyForm);
   };
 
@@ -49,99 +48,97 @@ export default function NewPost() {
     <div className="V_centered">
       <h3>CREATE A NEW POST :</h3>
       <form id="signin" className="genericBox" onSubmit={handleSubmit}>
-        <fieldset className=" fontInputSignin widthEl mgL20  input">
-          ...Category:
-          <div>
-            <input
-              type="radio"
-              value="NEED"
-              className="bold"
-              checked={radio === "NEED"}
-              onChange={handleChangeRadio}
-            />
-            <label htmlFor="need">NEED</label>
-          </div>
-          <div>
-            <input
-              type="radio"
-              value="OFFER"
-              checked={radio === "OFFER"}
-              onChange={handleChangeRadio}
-            />
-            <label htmlFor="offer">OFFER</label>
-          </div>
-        </fieldset>
+        <div>
+          <fieldset className=" fontInputSignin widthEl mgL20 input">
+            ...Category:
+            <div>
+              <input
+                type="radio"
+                value="NEED"
+                className="bold"
+                checked={radio === "NEED"}
+                onChange={handleChangeRadio}
+              />
+              <label htmlFor="need">NEED</label>
+            </div>
+            <div>
+              <input
+                type="radio"
+                value="OFFER"
+                checked={radio === "OFFER"}
+                onChange={handleChangeRadio}
+              />
+              <label htmlFor="offer">OFFER</label>
+            </div>
+          </fieldset>
 
-        <input
-          placeholder="...Tag for your post* "
-          className=" fontInputSignin widthEl flex_center center mgL20 border-bottom input"
-          type="text"
-          name="tag"
-          required
-          value={form.tag}
-          onChange={handleChange}
-        />
-        <textarea
-          placeholder="...details (max 125 characters)*"
-          className=" fontInputSignin widthEl flex_center center mgL20 border-bottom input"
-          minLength="25"
-          maxLength="125"
-          type="text"
-          name="details"
-          required
-          value={form.details}
-          onChange={handleChange}
-        />
-        <input
-          placeholder="...time it will be visible (hours)*"
-          className=" fontInputSignin widthEl flex_center center mgL20 border-bottom input"
-          type="number"
-          min="0.5"
-          max="5"
-          step="0.5"
-          name="lifespan"
-          required
-          value={form.lifespan}
-          onChange={handleChange}
-        />
-        <input
-          placeholder="...city*"
-          className=" fontInputSignin widthEl flex_center center mgL20 border-bottom input"
-          type="text"
-          name="city"
-          required
-          value={form.city}
-          onChange={handleChange}
-        />
-
-        <div id="uploadFile">
           <input
-            type="file"
-            ref={fileInputRef}
-            style={{ display: "none" }}
-            onChange={(e) => {
-              e.target.files[0]
-                ? (document.querySelector("#fileName").innerHTML = "")
-                : (document.querySelector("#fileName").innerHTML =
-                    "No file chosen");
-            }}
+            placeholder="...Tag for your post* "
+            className="I_transparent"
+            type="text"
+            name="tag"
+            required
+            value={form.tag}
+            onChange={handleChange}
           />
-          <button
-            type="button"
-            onClick={handleButtonClick}
-            className="capsule transButton fontInputSignin "
-          >
-            Upload File
-          </button>
-          <span id="fileName" className="fontInputSignin">
-            No file chosen
-          </span>
-        </div>
+          <textarea
+            placeholder="...details (max 125 characters)*"
+            className="I_transparent"
+            minLength="25"
+            maxLength="125"
+            type="text"
+            name="details"
+            required
+            value={form.details}
+            onChange={handleChange}
+          />
+          <input
+            placeholder="...time it will be visible (hours)*"
+            className="I_transparent"
+            type="number"
+            min="0.5"
+            max="5"
+            step="0.5"
+            name="lifespan"
+            required
+            value={form.lifespan}
+            onChange={handleChange}
+          />
+          <input
+            placeholder="...city*"
+            className="I_transparent"
+            type="text"
+            name="city"
+            required
+            value={form.city}
+            onChange={handleChange}
+          />
 
-        <button
-          type="submit"
-          className="capsule_big flex_center center inverted widthEl"
-        >
+          <div id="uploadFile">
+            <input
+              type="file"
+              ref={fileInputRef}
+              style={{ display: "none" }}
+              onChange={(e) => {
+                e.target.files[0]
+                  ? (document.querySelector("#fileName").innerHTML = "")
+                  : (document.querySelector("#fileName").innerHTML =
+                      "No file chosen");
+              }}
+            />
+            <button
+              type="button"
+              onClick={handleButtonClick}
+              className="capsule fontInputSignin "
+            >
+              Upload File
+            </button>
+            <span id="fileName" className="fontInputSignin">
+              No file chosen
+            </span>
+          </div>
+        </div>
+        <button type="submit" className="B_big_inverted">
           <h2>POST IT NOW ! ! ! !</h2>
         </button>
       </form>
