@@ -46,7 +46,7 @@ export default function Signin() {
       <form id="signin" className="genericBox" onSubmit={handleSubmit}>
         <input
           placeholder="...username*"
-          className=" fontInputSignin widthEl flex_center center mgL20 border-bottom input"
+          className="I_transparent"
           type="text"
           name="username"
           required
@@ -55,7 +55,7 @@ export default function Signin() {
         />
         <input
           placeholder="...name* "
-          className=" fontInputSignin widthEl flex_center center mgL20 border-bottom input"
+          className="I_transparent"
           type="text"
           name="name"
           required
@@ -64,7 +64,7 @@ export default function Signin() {
         />
         <input
           placeholder="...email*"
-          className=" fontInputSignin widthEl flex_center center mgL20 border-bottom input"
+          className="I_transparent"
           type="email"
           name="email"
           required
@@ -73,7 +73,7 @@ export default function Signin() {
         />
         <input
           placeholder="...password*"
-          className=" fontInputSignin widthEl flex_center center mgL20 border-bottom input"
+          className="I_transparent"
           type="password"
           name="password"
           required
@@ -82,7 +82,7 @@ export default function Signin() {
         />
         <input
           placeholder="...city*"
-          className=" fontInputSignin widthEl flex_center center mgL20 border-bottom input"
+          className="I_transparent"
           type="text"
           name="city"
           required
@@ -119,7 +119,7 @@ export default function Signin() {
 
         <button
           type="submit"
-          className="capsule_big flex_center center inverted widthEl"
+          className="B_big_inverted"
         >
           <h2>JOIN NOW ! ! ! !</h2>
         </button>

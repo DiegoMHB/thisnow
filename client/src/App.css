@@ -5,46 +5,11 @@
   font-family: Arial, Helvetica, sans-serif;
 }
 
-/* Generics */
-/* Boxes */
 
-.genericBox {
-  border-radius: 10px;
-  margin: 10px;
-  padding: 10px;
-  background-color: white;
-}
-
-
-.genericBox2 {
-  border-radius: 10px;
-  padding: 10px;
-  background-color: white;
-}
-.genericBox3 {
-  max-height: 45vh;
-  border-radius: 10px;
-  margin: 10px;
-  padding: 10px;
-  background-color: white;
-}
-
-.box_post {
-  margin: 10px;
-  padding: 10px;
-  border-radius: 10px;
-  /* background-color: rgba(255, 255, 255,0.4); */
-}
-
-.menu_line {
-  display: flex;
-  justify-content:space-evenly ;
-  margin: 0px 12px;
-}
 
 /* INPUT */
 
-.I_transparent{
+.I_transparent {
   font-size: 15px;
   width: 80vw;
   display: flex;
@@ -56,6 +21,20 @@
   outline: none;
 }
 
+.I_capsule_big {
+  border-radius: 22px;
+  padding: 12px;
+  background-color: rgb(255, 255, 255);
+  min-height: 50px;
+  padding: 15px;
+  margin: 10px 0px;
+  font-weight: bold;
+  width: 80vw;
+  display: flex;
+  justify-content: center;
+  border: none;
+  outline: none;
+}
 
 /* BUTTONS */
 
@@ -81,7 +60,7 @@
   background-color: rgb(255, 255, 255);
 }
 
-.B_small_I {
+.B_small_inv {
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -93,8 +72,43 @@
   color: white;
 }
 
+/* Generics */
+/* Boxes */
 
+.genericBox {
+  border-radius: 10px;
+  margin: 10px;
+  padding: 10px;
+  background-color: white;
+}
 
+.genericBox2 {
+  border-radius: 10px;
+  padding: 10px;
+  background-color: white;
+}
+.genericBox3 {
+  max-height: 45vh;
+  border-radius: 10px;
+  margin: 10px;
+  padding: 10px;
+  background-color: white;
+}
+
+.box_post {
+  height: 100%;
+  margin: 10px;
+  padding: 10px;
+  border-radius: 10px;
+  background-color: rgba(255, 255, 255,0.4);
+  height: max-content;
+}
+
+.menu_line {
+  display: flex;
+  justify-content: space-evenly;
+  margin: 0px 12px;
+}
 
 .capsule {
   display: flex;
@@ -115,8 +129,6 @@
   margin: 10px 0px;
 }
 
-
-
 .inline {
   display: flex;
   justify-content: space-between;
@@ -135,7 +147,6 @@
   color: white;
 }
 
-
 /* .inverted:hover {
   background-color: rgb(47, 209, 163);
   color: white;
@@ -144,7 +155,6 @@
 .bg_blue {
   box-shadow: 2px 2px 7px rgb(89, 89, 166);
 }
-
 
 .opacity4 {
   background-color: rgba(245, 242, 242, 0.7);
@@ -155,6 +165,8 @@
 .fontInputSignin {
   font-size: 15px;
 }
+
+
 
 .smallFontCont {
   width: 100%;
@@ -219,10 +231,9 @@
 .thisNow {
   display: none;
 }
-#background{
-  padding:10px;
+#background {
+  padding: 10px;
   height: 100vh;
-
 }
 #rootLayout {
   display: flex;
@@ -290,7 +301,7 @@
 
 /* PostDetails */
 
-inver_order{
+inver_order {
   display: flex;
   flex-direction: column-reverse;
 }
@@ -304,7 +315,6 @@ inver_order{
   align-items: center;
   border-top: 1px solid #ccc;
   text-decoration: none;
-  
 }
 
 #footer nav {
@@ -316,11 +326,7 @@ inver_order{
   text-decoration: none;
 }
 
-
-
 /*Views*/
-
-
 
 /*LogIn*/
 .widthEl {
@@ -384,29 +390,25 @@ inver_order{
   align-self: center;
 }
 
-
 #post_list {
   margin-top: 10px;
   padding: 15px;
   height: 78vh;
   border-bottom: 1px solid grey;
   overflow-y: scroll;
-  
 }
 
 #post_list_prof {
-  
   margin-top: 10px;
   padding: 15px;
   height: 65vh;
   border-bottom: 1px solid grey;
   overflow-y: scroll;
-  
 }
 
 /*Reviews*/
 
-.reviewBox{
+.reviewBox {
   height: 140px;
 }
 
@@ -430,14 +432,11 @@ fieldset {
   margin-top: 20px;
 }
 
-
-
 /* Login */
 
 #login input {
   font-size: 15px;
 }
-
 
 /*Post-View*/
 

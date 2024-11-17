@@ -24,28 +24,28 @@ function RootLayout() {
 
         <footer id="footer">
           <nav className="menu_line smallFont bold">
-            <NavLink className="B_small_I" to="/map">
+            <NavLink className="B_small_inv" to="/map">
               Map
             </NavLink>
-            <NavLink className="B_small_I " to="/tags">
+            <NavLink className="B_small_inv " to="/tags">
               Tags
             </NavLink>
             {user.isValidated ? (
-              <NavLink className="B_small_I" to="/posts">
+              <NavLink className="B_small_inv" to="/posts">
                 Posts
               </NavLink>
             ) : (
-              <NavLink className="B_small_I" to="/Reviews">
+              <NavLink className="B_small_inv" to="/Reviews">
                 Reviews
               </NavLink>
             )}
             {user.isValidated ? (
-              <NavLink className="B_small_I" to={`/user/${user.user._id}`}>
+              <NavLink className="B_small_inv" to={`/user/${user.user._id}`}>
                 Profile
               </NavLink>
             ) : (
               <NavLink
-                className="B_small_I"
+                className="B_small_inv"
                 onClick={() => setIsClicked(false)}
                 to={`/`}
               >

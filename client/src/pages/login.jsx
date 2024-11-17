@@ -4,12 +4,10 @@ import { useNavigate } from "react-router-dom";
 import { login } from "../features/userSlice";
 
 export default function Login() {
-
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -19,17 +17,21 @@ export default function Login() {
   };
 
   const loggedIn = useSelector((state) => state.user.isValidated);
-  if(loggedIn) {
-    navigate(`/map`, {replace: true})
-  };
-  
+  if (loggedIn) {
+    navigate(`/map`, { replace: true });
+  }
 
   return (
-    <div className="V_centered">
-      <form onSubmit={handleSubmit} id="login">
+    <div className=" V_centered">
+      <h3>LOG IN :</h3>
+      <form onSubmit={handleSubmit} id="login" className="box_post">
+        <label htmlFor="username" className="smallFont">
+          Enter a username:
+        </label>
         <input
-          placeholder="Enter a username"
-          className="capsule_big bold widthEl flex_center center input"
+          id="username"
+          placeholder="...username"
+          className="I_capsule_big"
           type="text"
           name="username"
           value={username}
@@ -37,9 +39,13 @@ export default function Login() {
             setUsername(e.target.value);
           }}
         />
+        <label htmlFor="password" className="smallFont">
+          Enter a password:
+        </label>
         <input
-          placeholder="Enter a password"
-          className="capsule_big bold widthEl flex_center center input"
+          id="password"
+          placeholder="...password"
+          className="I_capsule_big"
           type="password"
           name="password"
           value={password}
@@ -47,12 +53,11 @@ export default function Login() {
             setPassword(e.target.value);
           }}
         />
-        {useSelector((state) => state.user.error) !== "" && <p>Wrong password or username try again</p> }
+        {useSelector((state) => state.user.error) !== "" && (
+          <p>Wrong password or username try again</p>
+        )}
 
-        <button
-          type="submit"
-          className="capsule_big flex_center center inverted widthEl"
-        >
+        <button type="submit" className="B_big_inverted">
           <h2>THIS NOW </h2>
         </button>
       </form>
