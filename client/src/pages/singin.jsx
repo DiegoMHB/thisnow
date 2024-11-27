@@ -1,8 +1,7 @@
-import { useRef, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useEffect, useRef, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { newUser } from "../features/userSlice";
-
 
 const emptyForm = {
   username: "",
@@ -17,8 +16,18 @@ export default function Signin() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
+  const userValidated = useSelector((state) => state.user.isValidated);
+  const userError = useSelector((state) => state.user.error);
+  
+
   const [form, setForm] = useState(emptyForm);
   const fileInputRef = useRef(null);
+
+  useEffect(() => {
+    if (userValidated) {
+      navigate(`/map`, { replace: true });
+    }
+  }, [userValidated, navigate, userError]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -37,7 +46,6 @@ export default function Signin() {
 
     dispatch(newUser(form));
     setForm(emptyForm);
-    navigate(`/map`, { replace: true });
   };
 
   return (
@@ -117,12 +125,10 @@ export default function Signin() {
           </span>
         </div>
 
-        <button
-          type="submit"
-          className="B_big_inverted"
-        >
+        <button type="submit" className="B_big_inverted">
           <h2>JOIN NOW ! ! ! !</h2>
         </button>
+        {userError === 'Email already in use' || userError === 'User name already in use'? <p>{userError}</p> : null}
       </form>
     </div>
   );

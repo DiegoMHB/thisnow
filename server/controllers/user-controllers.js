@@ -1,32 +1,39 @@
 const model = require('../db/models/usersModel');
+const bcrypt = require('bcrypt');
 
 exports.userLogin = async (req, res) => {
   try {
     const { password, username } = req.body;
+
     const user = await model.login(username, password);
-    if (typeof user !== 'string') {
-      res.status(200).send(user);
-      return user;
-    } else {
-      res.status(404).send(user)
-    }
+    if (user instanceof model.userModel) {
+      user.password = ''
+      return res.status(200).send(user);
+    } 
   } catch (error) {
-    res.status(500).send('Something happened:', error);
+    if (error.message) {
+      return res.status(400).send({ error: error.message });
+    }
+    res.status(500).send({ error: 'Something happened' });
   }
 }
 
 
 exports.newUser = async (req, res) => {
-  try {
-    const user = req.body
+try {
+    const user = req.body;
+    const hashedPassword = await bcrypt.hash(user.password,10);
+    user.password = hashedPassword;
     const newUser = await model.newUser(user);
+
     if (newUser) {
-      res.status(201).send(user);
-    } else {
-      res.status(400).send('Couldnt create user')
+      return res.status(201).send(newUser); 
     }
   } catch (error) {
-    res.status(500).send('Something happened:', error);
+    if (error.message) {
+      return res.status(400).send({ error: error.message });
+    }
+    res.status(500).send({ error: 'Something happened' });
   }
 }
 
