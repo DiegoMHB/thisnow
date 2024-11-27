@@ -49,7 +49,8 @@ const Map = () => {
             url={mapUtilities.url}
             attribution={mapUtilities.attribution}
           />
-          {posts.map((post) => (
+          {posts.length > 0 &&
+          posts.map((post) => (
             <Marker
               key={post._id}
               position={[

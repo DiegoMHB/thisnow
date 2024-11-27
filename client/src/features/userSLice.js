@@ -58,7 +58,8 @@ export const newUser = createAsyncThunk(
         },
       });
       if (!response.ok) {
-        throw new Error('Failed to create a new user account');
+        const errorData = await response.json();
+        return thunkAPI.rejectWithValue(errorData.error || 'Unexpected server error');
       }
       const data = await response.json();
       return data

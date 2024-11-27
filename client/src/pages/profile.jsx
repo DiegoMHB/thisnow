@@ -9,7 +9,6 @@ function Profile() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user);
-  console.log(user);
   const posts = useSelector((state) => state.posts.posts);
 
   const userPosts = posts.filter((post) => user.user._id === post.user_id);
