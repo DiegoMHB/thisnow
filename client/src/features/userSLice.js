@@ -30,6 +30,7 @@ export const login = createAsyncThunk(
       const response = await fetch('http://localhost:3000/login', {
         method: "POST",
         body: JSON.stringify({ username, password }),
+        credentials: 'include', 
         headers: {
           'Content-Type': 'application/json',
         },

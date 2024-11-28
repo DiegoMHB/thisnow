@@ -2,6 +2,8 @@ const model = require('../db/models/usersModel');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 
+// eslint-disable-next-line no-undef
+const jsonToken = process.env.JSON_TOKEN
 
 
 exports.userLogin = async (req, res) => {
@@ -12,11 +14,18 @@ exports.userLogin = async (req, res) => {
     if (user instanceof model.userModel) {
       user.password = '';
       const token = jwt.sign(
-        { id: user._id, username: user.username }, 
-        process.env.JSON_TOKEN, 
+        { id: user._id, username: user.username },
+        jsonToken,
         { expiresIn: '1h' });
 
-      return res.status(200).send(user);
+      return res
+        .cookie('access_token', token, {
+          httpOnly: true,
+          secure: false,
+          sameSite: 'strict',
+        })
+        .status(200)
+        .send(user)
     }
   } catch (error) {
     if (error.message) {
