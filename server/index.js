@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
@@ -14,4 +16,4 @@ app.use(router);
 
 app.listen(port, () => {
   console.log(`Example app listening on port  http://localhost:${port}`)
-})
+});
