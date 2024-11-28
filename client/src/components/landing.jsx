@@ -1,10 +1,20 @@
 import { useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { fetchPosts } from "../features/postsSlice";
+import { loginAuto } from "../features/userSlice";
+import { useEffect } from "react";
 
 export default function Landing({ setIsClicked }) {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const loggedIn = useSelector((state) => state.user.isValidated);
+
+  useEffect(()=>{
+    dispatch(loginAuto());
+    if (loggedIn) {
+      navigate(`/map`, { replace: true });
+    }
+  },[dispatch, navigate, loggedIn])
 
   return (
     <section className="V_centered">

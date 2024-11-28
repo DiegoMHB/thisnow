@@ -35,16 +35,29 @@ exports.userLogin = async (req, res) => {
   }
 }
 
-
-exports.newUser = async (req, res) => {
+exports.userLoginAuto = async (req, res) => {
+  const token = req.cookies.access_token;
+  if (!token) {
+    return res.status(403);
+  }
   try {
-    const user = req.body;
-    const hashedPassword = await bcrypt.hash(user.password, 10);
-    user.password = hashedPassword;
-    const newUser = await model.newUser(user);
+    const data = jwt.verify(token,jsonToken);
+    const user = await model.userWithId(data.id);
+    if (user instanceof model.userModel) {
+      user.password = '';
+      const token = jwt.sign(
+        { id: user._id, username: user.username },
+        jsonToken,
+        { expiresIn: '1h' });
 
-    if (newUser) {
-      return res.status(201).send(newUser);
+      return res
+        .cookie('access_token', token, {
+          httpOnly: true,
+          secure: false,
+          sameSite: 'strict',
+        })
+        .status(200)
+        .send(user)
     }
   } catch (error) {
     if (error.message) {
@@ -54,6 +67,43 @@ exports.newUser = async (req, res) => {
   }
 }
 
+
+exports.newUser = async (req, res) => {
+  try {
+    const user = req.body;
+    const hashedPassword = await bcrypt.hash(user.password, 10);
+    user.password = hashedPassword;
+    const newUser = await model.newUser(user);
+
+    if (newUser instanceof model.userModel) {
+      newUser.password = '';
+      const token = jwt.sign(
+        { id: user._id, username: user.username },
+        jsonToken,
+        { expiresIn: '1h' });
+
+      return res
+        .cookie('access_token', token, {
+          httpOnly: true,
+          secure: false,
+          sameSite: 'strict',
+        })
+        .status(200)
+        .send(newUser)
+    }
+  } catch (error) {
+    if (error.message) {
+      return res.status(400).send({ error: error.message });
+    }
+    res.status(500).send({ error: 'Something happened' });
+  }
+}
+
+exports.userLogout = async (req, res) => {
+  return res
+    .clearCookie('access_token', { httpOnly: true, secure: false, sameSite: 'strict' }) 
+    .send({ message: 'Cookie deleted, session expired' });
+}
 
 exports.getAllUsers = async (req, res) => {
   try {

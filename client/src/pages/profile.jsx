@@ -3,13 +3,31 @@ import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import PostDetails from "../components/PostDetails";
 import { ProfileHeader } from "../components/profileComp";
-import { invalidate } from "../features/userSlice";
+import { invalidate, logout } from "../features/userSlice";
 
 function Profile() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user);
   const posts = useSelector((state) => state.posts.posts);
+
+  async function invalidateAndLogout() {
+    dispatch(invalidate());
+  
+    try {
+      const data = await dispatch(logout());
+      
+      if (data.payload && data.payload.message === 'Cookie deleted, session expired') {
+        navigate(`/`, {
+          replace: true,
+        });
+      } else {
+        console.error('Logout failed');
+      }
+    } catch (error) {
+      console.error('Error during logout:', error);
+    }
+  }
 
   const userPosts = posts.filter((post) => user.user._id === post.user_id);
 
@@ -47,15 +65,7 @@ function Profile() {
           >
             CREATE A NEW POST!!!
           </div>
-          <div
-            className="B_big_inverted"
-            onClick={() => {
-              dispatch(invalidate());
-              navigate(`/`, {
-                replace: true,
-              });
-            }}
-          >
+          <div className="B_big_inverted" onClick={invalidateAndLogout}>
             LOG OUT
           </div>
         </div>

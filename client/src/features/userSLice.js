@@ -46,6 +46,26 @@ export const login = createAsyncThunk(
   }
 )
 
+//login with Cookie
+export const loginAuto = createAsyncThunk(
+  'user/loginAuto',
+  async ( thunkAPI) => {
+    try {
+      const response = await fetch('http://localhost:3000/loginAuto', {
+        method: "GET",
+        credentials: 'include', 
+      });
+      if (!response.ok) {
+        throw new Error('Failed to login. Please check your credentials.');
+      }
+      const data = await response.json();
+      return data
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+)
+
 //new User
 export const newUser = createAsyncThunk(
   'user/newUser',
@@ -54,6 +74,7 @@ export const newUser = createAsyncThunk(
       const response = await fetch('http://localhost:3000/register', {
         method: "POST",
         body: JSON.stringify(user),
+        credentials: 'include', 
         headers: {
           'Content-Type': 'application/json',
         },
@@ -61,6 +82,28 @@ export const newUser = createAsyncThunk(
       if (!response.ok) {
         const errorData = await response.json();
         return thunkAPI.rejectWithValue(errorData.error || 'Unexpected server error');
+      }
+      const data = await response.json();
+      return data
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+)
+
+export const logout = createAsyncThunk(
+  'user/logout',
+  async (thunkAPI) => {
+    try {
+      const response = await fetch('http://localhost:3000/logout', {
+        method: "GET",
+        credentials: 'include',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+      if (!response.ok) {
+        throw new Error('Session couldn\'t be closed');
       }
       const data = await response.json();
       return data
@@ -92,8 +135,8 @@ const userSlice = createSlice({
   name: 'user',
   initialState,
   reducers: {
-    invalidate (state) {
-      state.isValidated = false;
+    invalidate () {
+      return { ...initialState }
     },
   },
   extraReducers: builder => {
@@ -112,6 +155,40 @@ const userSlice = createSlice({
       state.isValidated = false;
       state.loading = false;
       state.user = {};
+      state.error = action.payload
+    })
+    
+    //LOGINAUTO
+    builder.addCase(loginAuto.pending, state => {
+      state.loading = true
+    })
+    builder.addCase(loginAuto.fulfilled, (state, action) => {
+      state.isValidated = true;
+      state.loading = false;
+      state.user = action.payload;
+      state.error = ''
+    })
+    builder.addCase(loginAuto.rejected, (state, action) => {
+      state.isValidated = false;
+      state.loading = false;
+      state.user = {};
+      state.error = action.payload
+    })
+ 
+    //LOGOUT
+    builder.addCase(logout.pending, state => {
+      state.loading = true
+    })
+    builder.addCase(logout.fulfilled, (state) => {
+      state.isValidated = false;
+      state.loading = false;
+      state.user = {};
+      state.error = ''
+    })
+    builder.addCase(logout.rejected, (state, action) => {
+      state.isValidated = false;
+      state.loading = false;
+      state.user = action.payload;
       state.error = action.payload
     })
 

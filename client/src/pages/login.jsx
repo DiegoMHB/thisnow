@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { login } from "../features/userSlice";
@@ -17,9 +17,12 @@ export default function Login() {
   };
 
   const loggedIn = useSelector((state) => state.user.isValidated);
-  if (loggedIn) {
-    navigate(`/map`, { replace: true });
-  }
+  
+  useEffect(() => {
+    if (loggedIn) {
+      navigate(`/map`, { replace: true });
+    }
+  }, [loggedIn, navigate]);
 
   return (
     <div className=" V_centered">

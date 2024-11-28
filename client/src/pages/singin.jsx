@@ -18,7 +18,6 @@ export default function Signin() {
 
   const userValidated = useSelector((state) => state.user.isValidated);
   const userError = useSelector((state) => state.user.error);
-  
 
   const [form, setForm] = useState(emptyForm);
   const fileInputRef = useRef(null);
@@ -128,7 +127,10 @@ export default function Signin() {
         <button type="submit" className="B_big_inverted">
           <h2>JOIN NOW ! ! ! !</h2>
         </button>
-        {userError === 'Email already in use' || userError === 'User name already in use'? <p>{userError}</p> : null}
+        {userError === "Email already in use" ||
+        userError === "User name already in use" ? (
+          <p>{userError}</p>
+        ) : null}
       </form>
     </div>
   );
