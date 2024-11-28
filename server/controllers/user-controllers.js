@@ -1,5 +1,8 @@
 const model = require('../db/models/usersModel');
 const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
+
+
 
 exports.userLogin = async (req, res) => {
   try {
@@ -7,9 +10,14 @@ exports.userLogin = async (req, res) => {
 
     const user = await model.login(username, password);
     if (user instanceof model.userModel) {
-      user.password = ''
+      user.password = '';
+      const token = jwt.sign(
+        { id: user._id, username: user.username }, 
+        process.env.JSON_TOKEN, 
+        { expiresIn: '1h' });
+
       return res.status(200).send(user);
-    } 
+    }
   } catch (error) {
     if (error.message) {
       return res.status(400).send({ error: error.message });
@@ -20,14 +28,14 @@ exports.userLogin = async (req, res) => {
 
 
 exports.newUser = async (req, res) => {
-try {
+  try {
     const user = req.body;
-    const hashedPassword = await bcrypt.hash(user.password,10);
+    const hashedPassword = await bcrypt.hash(user.password, 10);
     user.password = hashedPassword;
     const newUser = await model.newUser(user);
 
     if (newUser) {
-      return res.status(201).send(newUser); 
+      return res.status(201).send(newUser);
     }
   } catch (error) {
     if (error.message) {
