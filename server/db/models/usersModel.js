@@ -14,7 +14,6 @@ const userSchema = new mongoose.Schema({
 const userModel = mongoose.model('User', userSchema);
 
 const login = async function (username, password) {
-
   try {
     const user = await userModel.findOne({ username });
     if (!user) {
@@ -26,6 +25,19 @@ const login = async function (username, password) {
     } else {
       throw new Error('Wrong Password')
     }
+  } catch (e) {
+    console.log('Error in Model login', e.message)
+    throw e
+  }
+}
+
+const userWithId = async function (id) {
+  try {
+    const user = await userModel.findById(id );
+    if (!user) {
+      throw new Error('The username doesn´t exist')
+    }
+      return user
   } catch (e) {
     console.log('Error in Model login', e.message)
     throw e
@@ -64,4 +76,4 @@ const getUserById = async function (id) {
   return user;
 };
 
-module.exports = { newUser, getAllUsers, login, getUserById, userModel }
+module.exports = { newUser, getAllUsers, login, getUserById, userWithId ,userModel }

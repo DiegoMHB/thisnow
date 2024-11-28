@@ -6,6 +6,10 @@ const posts = require('./controllers/post-controllers');
 //USERS:
 router.post('/register', users.newUser);
 router.post('/login', users.userLogin);
+router.get('/loginAuto', users.userLoginAuto);
+router.get('/logout', users.userLogout);
+
+//USERS DATA: 
 router.get('/users', users.getAllUsers);
 router.get('/user/:id', users.getUserById);
 
