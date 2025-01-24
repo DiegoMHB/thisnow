@@ -43,7 +43,9 @@ export const getCoords = () => (dispatch) => {
       timeout: 5000,
       maximumAge: 0,
     }
+    
   );
+
 };
 
 export default mapSlice.reducer;

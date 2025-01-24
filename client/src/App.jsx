@@ -16,9 +16,6 @@ import RootLayout from "./layout/RootLayout";
 import Signin from "./pages/singin";
 import Tags from "./pages/tags";
 
-
-console.log(import.meta.env.VITE_API_KEY);
-
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<RootLayout />}>
