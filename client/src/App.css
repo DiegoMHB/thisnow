@@ -72,6 +72,12 @@
   color: white;
 }
 
+.B_disabled{
+  opacity: 50%;
+  cursor: not-allowed;
+  
+}
+
 /* Generics */
 /* Boxes */
 

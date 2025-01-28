@@ -79,6 +79,7 @@ export const newUser = createAsyncThunk(
           'Content-Type': 'application/json',
         },
       });
+      console.log(response)
       if (!response.ok) {
         const errorData = await response.json();
         return thunkAPI.rejectWithValue(errorData.error || 'Unexpected server error');

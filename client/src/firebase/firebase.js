@@ -1,4 +1,7 @@
 import { initializeApp } from "firebase/app";
+import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
+import { v4 } from 'uuid'
+
 
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -14,11 +17,20 @@ const firebaseConfig = {
   projectId: "thisnow-ad749",
   storageBucket: "thisnow-ad749.firebasestorage.app",
   messagingSenderId: "948922319113",
-  appId: "1:948922319113:web:5deb5321c6098243d8d3d8",
-  measurementId: "G-N2EGH8CX25"
+  appId: "1:948922319113:web:38ad7de9e204d683d8d3d8",
+  measurementId: "G-22DZ09SBP6"
 };
 
 
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
+
+export const storage = getStorage(app);
+
+export async function  uploadFile (file, location) {
+  const storageRef = ref(storage, location + v4());
+  await uploadBytes(storageRef, file);
+  const url = await getDownloadURL(storageRef);
+  return url
+}

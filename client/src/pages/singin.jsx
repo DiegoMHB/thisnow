@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { newUser } from "../features/userSlice";
+import { uploadFile } from "../firebase/firebase";
 
 const emptyForm = {
   username: "",
@@ -20,10 +21,15 @@ export default function Signin() {
   const userError = useSelector((state) => state.user.error);
 
   const [form, setForm] = useState(emptyForm);
+  const [selectedFile, setselectedFile] = useState("");
+  const [isUploaded, setIsUploaded] = useState(false);
   const fileInputRef = useRef(null);
 
-  useEffect(() => {
+  useEffect(() => { 
+    console.log('in USEEFFECT')
+    console.log(userValidated)
     if (userValidated) {
+      console.log('---- VALIDATED')
       navigate(`/map`, { replace: true });
     }
   }, [userValidated, navigate, userError]);
@@ -36,12 +42,30 @@ export default function Signin() {
     });
   };
 
-  const handleButtonClick = () => {
-    fileInputRef.current.click();
+  const handleFile = async (e) => {
+    e.preventDefault();
+    const file = e.target.files[0];
+    setselectedFile(file.name);
+
+    try {
+      const url = await uploadFile(selectedFile, "/Profile_pics/");
+      if (typeof url !== "string") {
+        throw new Error();
+      }
+      setForm({
+        ...form,
+        profile_picture: url,
+      });
+      setIsUploaded(true);
+    } catch (e) {
+      setselectedFile("Failed");
+      console.log(e);
+    }
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    console.log(form);
 
     dispatch(newUser(form));
     setForm(emptyForm);
@@ -99,32 +123,33 @@ export default function Signin() {
 
         <div id="uploadFile">
           <input
-            type="file"
             ref={fileInputRef}
             style={{ display: "none" }}
-            onChange={(e) => {
-              setForm({ ...form, profile_picture: e.target.files[0] });
-              {
-                e.target.files[0]
-                  ? (document.querySelector("#fileName").innerHTML = "")
-                  : (document.querySelector("#fileName").innerHTML =
-                      "No file chosen");
-              }
-            }}
+            type="file"
+            name=""
+            value=""
+            onChange={handleFile}
           />
           <button
             type="button"
-            onClick={handleButtonClick}
+            onClick={() => fileInputRef.current.click()}
             className="capsule transButton fontInputSignin "
           >
             Upload File
           </button>
           <span id="fileName" className="fontInputSignin">
-            No file chosen
+            {selectedFile ? `${selectedFile}` : "No file chosen"}
           </span>
         </div>
 
-        <button type="submit" className="B_big_inverted">
+        <button
+          type="submit"
+          className={`B_big_inverted ${
+            selectedFile && !isUploaded
+              ? "B_disabled"
+              : ""
+          }`}
+        >
           <h2>JOIN NOW ! ! ! !</h2>
         </button>
         {userError === "Email already in use" ||
