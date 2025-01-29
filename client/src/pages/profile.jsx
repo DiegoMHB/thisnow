@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import PostDetails from "../components/PostDetails";
 import { ProfileHeader } from "../components/profileComp";
-import { invalidate, logout } from "../features/userSlice";
+import { invalidate, logout } from "../features/userSLice";
 
 function Profile() {
   const navigate = useNavigate();
@@ -13,19 +13,22 @@ function Profile() {
 
   async function invalidateAndLogout() {
     dispatch(invalidate());
-  
+
     try {
       const data = await dispatch(logout());
-      
-      if (data.payload && data.payload.message === 'Cookie deleted, session expired') {
+
+      if (
+        data.payload &&
+        data.payload.message === "Cookie deleted, session expired"
+      ) {
         navigate(`/`, {
           replace: true,
         });
       } else {
-        console.error('Logout failed');
+        console.error("Logout failed");
       }
     } catch (error) {
-      console.error('Error during logout:', error);
+      console.error("Error during logout:", error);
     }
   }
 

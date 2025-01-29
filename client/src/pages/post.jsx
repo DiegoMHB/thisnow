@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
-import { fetchUserById } from "../features/userSlice";
+import { fetchUserById } from "../features/userSLice";
 import { ProfileHeader } from "../components/profileComp";
 import PostDetails from "../components/PostDetails";
 

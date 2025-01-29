@@ -1,18 +1,20 @@
+
 export const ProfileHeader = ({user}) => {
   
   const date = new Date(user.createdAt);
-
+  
   const formattedDate = date.toLocaleString('en-US', {
     year: 'numeric',
     month: 'short',  
     day: 'numeric',
     
   });
+
   
 
   return (
     <section id="user_profile" className="genericBox bg_blue">
-      <img src={'/' + user.profile_picture} alt={user.profile_picture} />
+      <img src={user.profile_picture || "https://via.placeholder.com/150"} alt={"https://via.placeholder.com/150"} />
       <div id="user_profile_det">
         <h3>{user.username}</h3>
         <div className="smallFontCont ">

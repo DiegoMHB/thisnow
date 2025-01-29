@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { login } from "../features/userSlice";
+import { login } from "../features/userSLice";
 
 export default function Login() {
   const navigate = useNavigate();
@@ -17,7 +17,7 @@ export default function Login() {
   };
 
   const loggedIn = useSelector((state) => state.user.isValidated);
-  
+
   useEffect(() => {
     if (loggedIn) {
       navigate(`/map`, { replace: true });

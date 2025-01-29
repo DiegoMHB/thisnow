@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { newUser } from "../features/userSlice";
+import { newUser } from "../features/userSLice";
 import { uploadFile } from "../firebase/firebase";
 
 const emptyForm = {
@@ -21,15 +21,12 @@ export default function Signin() {
   const userError = useSelector((state) => state.user.error);
 
   const [form, setForm] = useState(emptyForm);
-  const [selectedFile, setselectedFile] = useState("");
+  const [selectedFile, setselectedFile] = useState({});
   const [isUploaded, setIsUploaded] = useState(false);
   const fileInputRef = useRef(null);
 
-  useEffect(() => { 
-    console.log('in USEEFFECT')
-    console.log(userValidated)
+  useEffect(() => {
     if (userValidated) {
-      console.log('---- VALIDATED')
       navigate(`/map`, { replace: true });
     }
   }, [userValidated, navigate, userError]);
@@ -45,27 +42,36 @@ export default function Signin() {
   const handleFile = async (e) => {
     e.preventDefault();
     const file = e.target.files[0];
-    setselectedFile(file.name);
+    setselectedFile(file);
+  }
 
-    try {
-      const url = await uploadFile(selectedFile, "/Profile_pics/");
-      if (typeof url !== "string") {
-        throw new Error();
-      }
-      setForm({
-        ...form,
-        profile_picture: url,
-      });
-      setIsUploaded(true);
-    } catch (e) {
-      setselectedFile("Failed");
-      console.log(e);
+  useEffect(() => {
+    if (selectedFile) {
+      
+      const upload = async () => {
+        try {
+          const url = await uploadFile(selectedFile, "/Profile_pics/");
+          if (typeof url !== "string") {
+            throw new Error();
+          }
+          setForm((prevForm) => ({
+            ...prevForm,
+            profile_picture: url, 
+          }));
+          setIsUploaded(true);
+        } catch (e) {
+          setselectedFile("Failed");
+          console.log(e);
+        }
+      };
+  
+      upload(); 
     }
-  };
+  }, [selectedFile])
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(form);
+    console.log('sent')
 
     dispatch(newUser(form));
     setForm(emptyForm);
@@ -137,17 +143,15 @@ export default function Signin() {
           >
             Upload File
           </button>
-          <span id="fileName" className="fontInputSignin">
-            {selectedFile ? `${selectedFile}` : "No file chosen"}
+          <span id="fileName" className="fontInputSignin ">
+            {selectedFile ? `${selectedFile.name}` : "No file chosen"}
           </span>
         </div>
 
         <button
           type="submit"
           className={`B_big_inverted ${
-            selectedFile && !isUploaded
-              ? "B_disabled"
-              : ""
+            selectedFile && !isUploaded ? "B_disabled" : ""
           }`}
         >
           <h2>JOIN NOW ! ! ! !</h2>
